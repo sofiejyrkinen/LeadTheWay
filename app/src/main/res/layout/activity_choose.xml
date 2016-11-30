@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_choose"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="5dp"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp"
+    android:paddingTop="5dp"
+    android:background="#f2f2f5"
+    tools:context="app.garvinen.leadtheway.ChooseActivity">
+
+    <TextView
+        android:text="Sök resa"
+        android:textSize="20sp"
+        android:textColor="#2b2a2a"
+        android:background="@drawable/custom_header"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:id="@+id/HeaderSearch"/>
+
+    <TextView
+        android:text="Välj ett av alternativen:"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"
+        android:textSize="15sp"
+        android:textColor="#2b2a2a"
+        android:id="@+id/LabelGoToo" />
+
+    <Button
+        android:text="Jag vill åka"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="120sp"
+        android:background="@drawable/custom_button"
+        android:id="@+id/buttonWantGo" />
+
+    <Button
+        android:text="Jag vill vara framme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="30sp"
+        android:background="@drawable/custom_button"
+        android:id="@+id/buttonWantEnd" />
+
+
+
+
+</LinearLayout>

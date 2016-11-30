@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_go_too"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="5dp"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp"
+    android:paddingTop="5dp"
+    android:background="#f2f2f5"
+    tools:context="app.garvinen.leadtheway.GoTooActivity">
+
+    <TextView
+        android:text="Jag vill åka"
+        android:textSize="20sp"
+        android:textColor="#2b2a2a"
+        android:background="@drawable/custom_header"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:id="@+id/HeaderSearch"/>
+
+    <TextView
+        android:text="Välj dag du vill åka:"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:textColor="#2b2a2a"
+        android:layout_marginTop="20sp"
+        android:id="@+id/LabelGoFrom" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20sp"
+        android:gravity="center"
+        android:id="@+id/containDayButton">
+
+        <Button
+            android:text="Måndag"
+            android:layout_width="50sp"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="10sp"
+            android:background="@drawable/monday_button"/>
+
+        <Button
+            android:text="TISDAG"
+            android:layout_width="50sp"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="10sp"
+            android:background="@drawable/tuesday_button"/>
+
+        <Button
+            android:text="ONSDAG"
+            android:layout_width="50sp"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="10sp"
+            android:background="@drawable/wednesday_button"/>
+
+        <Button
+            android:text="TORSDAG"
+            android:layout_width="50sp"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="10sp"
+            android:background="@drawable/thursday_button"/>
+
+        <Button
+            android:text="FREDAG"
+            android:layout_width="50sp"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="10sp"
+            android:background="@drawable/friday_button"/>
+
+        <Button
+            android:text="LÖRDAG"
+            android:layout_width="50sp"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="10sp"
+            android:background="@drawable/saturday_button"/>
+
+        <Button
+            android:text="SÖNDAG"
+            android:layout_width="50sp"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="10sp"
+            android:background="@drawable/sunday_button"/>
+
+    </LinearLayout>
+
+
+    <TextView
+        android:text="Välj tid du vill åka:"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30sp"
+        android:textSize="15sp"
+        android:textColor="#2b2a2a"
+        android:id="@+id/LabelGoToo" />
+
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="150sp"/>
+
+    <Button
+        android:text="Nästa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="60sp"
+        android:background="@drawable/custom_button"
+        android:id="@+id/buttonNext" />
+
+
+</LinearLayout>
