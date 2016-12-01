@@ -8,4 +8,12 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!-- If we want to use a small popup window, then we need to add this code again.
+        And add the code in Manifest.xml..
+
+    <style name="AppTheme.BehindDestAdder">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
+    </style> -->
+
 </resources>

@@ -107,10 +107,21 @@
         android:textColor="#2b2a2a"
         android:id="@+id/LabelGoToo" />
 
+    <Button
+        android:id="@+id/selecttime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="Select Time" />
 
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="150sp"/>
+    <TextView
+        android:id="@+id/set_time"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="10dp" />
+
 
     <Button
         android:text="Nästa"
@@ -118,7 +129,7 @@
         android:layout_height="wrap_content"
         android:textColor="#FFFFFF"
         android:layout_marginTop="60sp"
-        android:background="@drawable/custom_button"
+        android:background="@drawable/next_button"
         android:id="@+id/buttonNext" />
 
 

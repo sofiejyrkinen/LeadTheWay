@@ -118,7 +118,7 @@
         android:layout_height="wrap_content"
         android:textColor="#FFFFFF"
         android:layout_marginTop="60sp"
-        android:background="@drawable/custom_button"
+        android:background="@drawable/next_button"
         android:id="@+id/buttonNext" />
 
 

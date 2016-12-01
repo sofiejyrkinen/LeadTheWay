@@ -26,10 +26,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void initiateButtons(){
+
         Button buttonNext =(Button) findViewById(R.id.buttonNext);
         buttonNext.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 Intent intent = new Intent(MainActivity.this, ChooseActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button preButton =(Button) findViewById(R.id.prebutton);
+        preButton.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent intent = new Intent(MainActivity.this, SettingsDestinationActivity.class);
                 startActivity(intent);
             }
         });
