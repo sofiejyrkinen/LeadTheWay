@@ -17,4 +17,8 @@ public class EndAtActivity extends AppCompatActivity {
         Log.d(LOG_TAG, "Setting Layout Done");
         //initiateButtons();
     }
-}
+
+
+
+
+}//end of EndAtActivity

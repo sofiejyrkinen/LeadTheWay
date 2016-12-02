@@ -107,28 +107,19 @@
         android:textColor="#2b2a2a"
         android:id="@+id/LabelGoToo" />
 
-    <Button
-        android:id="@+id/selecttime"
+    <TimePicker
+        android:id="@+id/simpleTimePicker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="10dp"
-        android:text="Select Time" />
-
-    <TextView
-        android:id="@+id/set_time"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="10dp" />
-
+        android:timePickerMode="spinner"
+        android:layout_gravity="center"/>
 
     <Button
         android:text="Nästa"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="#FFFFFF"
-        android:layout_marginTop="60sp"
+        android:layout_marginTop="20sp"
         android:background="@drawable/next_button"
         android:id="@+id/buttonNext" />
 
