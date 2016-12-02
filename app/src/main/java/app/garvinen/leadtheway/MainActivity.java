@@ -72,13 +72,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button preButton =(Button) findViewById(R.id.prebutton);
-        preButton.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                Intent intent = new Intent(MainActivity.this, SettingsDestinationActivity.class);
-                startActivity(intent);
-            }
-        });
     }//end of initiateButtons
 
 

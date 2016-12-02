@@ -1,5 +1,6 @@
 package app.garvinen.leadtheway.model;
 
+import android.content.Context;
 import java.util.List;
 import app.garvinen.leadtheway.describe.Destination;
 import app.garvinen.leadtheway.storage.StorageProvider;
@@ -11,8 +12,19 @@ import app.garvinen.leadtheway.storage.StorageProvider;
 
 public class DestinationModel {
 
+
+    private Context c;
+
+    public DestinationModel(Context c) {
+        this.c = c;
+    }
+
     public List<Destination> getDestination() {
-        return StorageProvider.getProvider().getDestination();
+        return StorageProvider.getProvider(c).getDestination();
+    }
+
+    public void addDestination(Destination d) {
+        StorageProvider.getProvider(c).addDestination(d);
     }
 
 

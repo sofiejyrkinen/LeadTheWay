@@ -24,8 +24,10 @@ public class DBDestinationStore implements DestinationStore {
     private SQLiteDatabase database;
     private MySQLiteHelper dbHelper;
     private String[] allColumns = { MySQLiteHelper.COLUMN_ID,
-            MySQLiteHelper.COLUMN_ICON, MySQLiteHelper.COLUMN_ICONNAME,
-            MySQLiteHelper.COLUMN_ADRESS, MySQLiteHelper.COLUMN_CITY,
+            MySQLiteHelper.COLUMN_ICON,
+            MySQLiteHelper.COLUMN_ICONNAME,
+            MySQLiteHelper.COLUMN_ADRESS,
+            MySQLiteHelper.COLUMN_CITY,
             MySQLiteHelper.COLUMN_POSTALCODE };
 
     public DBDestinationStore(Context context)  {
@@ -77,8 +79,8 @@ public class DBDestinationStore implements DestinationStore {
     }
 
     @Override
-    public List<Destination> getDestinations() {
-        List<Destination> destinations = new ArrayList<Destination>();
+    public List<Destination> getDestination() {
+        List<Destination> destination = new ArrayList<>();
 
         Cursor cursor = database.query(MySQLiteHelper.TABLE_DESTINATIONS,
                 allColumns, null, null, null, null, null);
@@ -86,12 +88,12 @@ public class DBDestinationStore implements DestinationStore {
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             Destination d = cursorToDestination(cursor);
-            destinations.add(d);
+            destination.add(d);
             cursor.moveToNext();
         }
         // make sure to close the cursor
         cursor.close();
-        return destinations;
+        return destination;
     }
 
     public void addDestination(Destination d) {

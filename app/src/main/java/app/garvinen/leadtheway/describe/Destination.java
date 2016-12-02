@@ -6,7 +6,6 @@ package app.garvinen.leadtheway.describe;
 
 public class Destination {
 
-
     private String icon;
     private String iconName;
     private String adress;
@@ -21,6 +20,7 @@ public class Destination {
         this.postalCode = postalCode;
     }
 
+    @Override
     public String toString() {
         return icon + " | " + iconName  + " | " + adress + ", " + city + ", " + postalCode;}
 

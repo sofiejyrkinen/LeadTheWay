@@ -11,8 +11,6 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 
-import java.lang.reflect.Member;
-
 import app.garvinen.leadtheway.describe.Destination;
 import app.garvinen.leadtheway.model.DestinationModel;
 
@@ -30,12 +28,14 @@ public class SettingsActivity extends AppCompatActivity {
         EditText nameField  = (EditText) findViewById(R.id.TextFieldIconName);
         EditText adressField = (EditText) findViewById(R.id.TextFieldAdress);
 
+        String icon = nameField.getText().toString();
         String iconName = nameField.getText().toString();
         String adress = adressField.getText().toString();
         String city = adressField.getText().toString();
         String postalCode = adressField.getText().toString();
 
-        Destination d = new Destination (iconName, adress, city, postalCode);
+        Destination d = new Destination (icon, iconName, adress, city, postalCode);
+
     }
 
 

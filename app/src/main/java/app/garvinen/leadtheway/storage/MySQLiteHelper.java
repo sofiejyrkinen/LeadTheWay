@@ -12,7 +12,7 @@ import android.util.Log;
 public class MySQLiteHelper extends SQLiteOpenHelper {
 
 
-    public static final String TABLE_DESTINATIONS = "members";
+    public static final String TABLE_DESTINATIONS = "destination";
     public static final String COLUMN_ID     = "_id";
     public static final String COLUMN_ICON   = "icon";
     public static final String COLUMN_ICONNAME  = "iconName";

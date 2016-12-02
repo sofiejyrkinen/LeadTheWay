@@ -10,7 +10,7 @@ import app.garvinen.leadtheway.describe.Destination;
 
 public interface DestinationStore {
 
-    public List<Destination> getDestinations();
+    public List<Destination> getDestination();
     public void addDestination(Destination d);
 
 

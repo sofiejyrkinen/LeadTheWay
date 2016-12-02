@@ -1,13 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_settings_notifications"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    android:paddingBottom="5dp"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp"
+    android:paddingTop="5dp"
+    android:background="#f2f2f5"
     tools:context="app.garvinen.leadtheway.SettingsNotificationsActivity">
 
-</RelativeLayout>
+    <TextView
+        android:id="@+id/HeaderSettingNote"
+        android:text="Inställningar notifikationer"
+        android:textSize="20sp"
+        android:textColor="#2b2a2a"
+        android:background="@drawable/custom_header"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        />
+
+    <TextView
+        android:id="@+id/LabelNotification"
+        android:text="Välj icon, namn och adress:"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:textColor="#2b2a2a"
+        android:layout_marginTop="20sp" />
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_marginTop="20sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:layout_weight="2"
+        android:layout_gravity="left"
+        android:text="Name"
+        android:background="@drawable/custom_edit_text_field" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:spinnerMode="dropdown"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_gravity="right"
+        android:text="Hejhopp" />
+
+</LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_marginTop="20sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:layout_weight="2"
+        android:layout_gravity="left"
+        android:text="Name"
+        android:background="@drawable/custom_edit_text_field" />
+
+        <Spinner
+            android:id="@+id/spinner2"
+            android:spinnerMode="dropdown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="right"
+            android:text="Hejhopp" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+    <EditText
+        android:id="@+id/editText3"
+        android:layout_marginTop="20sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:layout_weight="2"
+        android:layout_gravity="left"
+        android:text="Name"
+        android:background="@drawable/custom_edit_text_field" />
+
+        <Spinner
+            android:id="@+id/spinner3"
+            android:spinnerMode="dropdown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="right"
+            android:text="Hejhopp" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/buttonNext"
+        android:text="Nästa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="200sp"
+        android:background="@drawable/next_button"
+        />
+
+</LinearLayout>
