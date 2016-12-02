@@ -1,26 +1,25 @@
 package app.garvinen.leadtheway;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
+public class SettingsActivity extends AppCompatActivity {
 
-    private static String LOG_TAG = MainActivity.class.getName();
+    private static String LOG_TAG = SettingsActivity.class.getName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d(LOG_TAG,"Setting Layout");
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_settings_destination);
         Log.d(LOG_TAG, "Setting Layout Done");
-        initiateButtons();
-    }
+        //initiateButtons();
+
+    }//end of onCreate
 
     public void onStart(){
         super.onStart();
@@ -43,18 +42,18 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.settingsDestination) {
-                Intent intent = new Intent(MainActivity.this, SettingsDestinationActivity.class);
-                startActivity(intent);
+            Intent intent = new Intent(SettingsActivity.this, SettingsDestinationActivity.class);
+            startActivity(intent);
             return true;
         }
         if (id == R.id.settingsNotification) {
-            Intent intent = new Intent(MainActivity.this, SettingsNotificationsActivity.class);
+            Intent intent = new Intent(SettingsActivity.this, SettingsNotificationsActivity.class);
             startActivity(intent);
             return true;
         }
 
         if (id == R.id.settingSettings) {
-            Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+            Intent intent = new Intent(SettingsActivity.this, SettingsActivity.class);
             startActivity(intent);
             return true;
         }
@@ -62,25 +61,9 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void initiateButtons(){
-
-        Button buttonNext =(Button) findViewById(R.id.buttonNext);
-        buttonNext.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                Intent intent = new Intent(MainActivity.this, ChooseActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        Button preButton =(Button) findViewById(R.id.prebutton);
-        preButton.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                Intent intent = new Intent(MainActivity.this, SettingsDestinationActivity.class);
-                startActivity(intent);
-            }
-        });
-    }//end of initiateButtons
 
 
 
-}//end of MainActivity
+
+
+}//end of SettingsActivity

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/settings1"
+    <item android:id="@+id/settingsDestination"
         android:title="Destinationer"
         android:orderInCategory="100" />
-    <item android:id="@+id/settings2"
+    <item android:id="@+id/settingsNotification"
         android:title="Notifikationer"
         android:orderInCategory="200" />
-    <item android:id="@+id/settings3"
+    <item android:id="@+id/settingSettings"
         android:title="Inställningar"
         android:orderInCategory="300" />
 

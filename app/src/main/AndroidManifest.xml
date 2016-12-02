@@ -20,9 +20,11 @@
         <activity android:name=".GoTooActivity" />
         <activity android:name=".SettingsDestinationActivity" />
         <activity android:name=".DestinationAdder">
+
             <!-- android:theme="@style/AppTheme.BehindDestAdder"> -->
         </activity>
-
+        <activity android:name=".SettingsNotificationsActivity" />
+        <activity android:name=".SettingsActivity"></activity>
     </application>
 
 </manifest>
