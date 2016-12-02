@@ -9,9 +9,9 @@ public class Destination {
     private String iconName;
     private String adress;
     private String city;
-    private int postalCode;
+    private String postalCode;
 
-    public Destination(String iconName, String adress, String city, int postalCode) {
+    public Destination(String iconName, String adress, String city, String postalCode) {
         this.iconName = iconName;
         this.adress = adress;
         this.city = city;

@@ -1,15 +1,43 @@
 package app.garvinen.leadtheway;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ListView;
+
+import java.lang.reflect.Member;
+
+import app.garvinen.leadtheway.describe.Destination;
+import app.garvinen.leadtheway.model.DestinationModel;
+
 
 public class SettingsActivity extends AppCompatActivity {
 
     private static String LOG_TAG = SettingsActivity.class.getName();
+
+
+    private ListView destinationList;
+    private ArrayAdapter<Destination> adapter;
+    private DestinationModel dm;
+
+    public void buttonClick(View view) {
+        EditText nameField  = (EditText) findViewById(R.id.TextFieldIconName);
+        EditText adressField = (EditText) findViewById(R.id.TextFieldAdress);
+
+        String iconName = nameField.getText().toString();
+        String adress = adressField.getText().toString();
+        String city = adressField.getText().toString();
+        String postalCode = adressField.getText().toString();
+
+        Destination d = new Destination (iconName, adress, city, postalCode);
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +46,14 @@ public class SettingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_settings_destination);
         Log.d(LOG_TAG, "Setting Layout Done");
         //initiateButtons();
+        dm = new DestinationModel(this);
+
+        destinationList = (ListView) findViewById(R.id.destination_List);
+        adapter = new ArrayAdapter<Destination>(this,
+                android.R.layout.simple_list_item_1,
+                android.R.id.text1,
+                dm.getDestination());
+        destinationList.setAdapter(adapter);
 
     }//end of onCreate
 
@@ -60,8 +96,6 @@ public class SettingsActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
-
 
 
 

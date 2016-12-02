@@ -18,8 +18,8 @@ public class DBStorage implements Storage {
 
     public List<Destination> getDestination() {
         ArrayList<Destination> destination = new ArrayList<>();
-        destination.add(new Destination("Hem", "Räntmästaregatan 25i", "Göteborg", 41658));
-        destination.add(new Destination("Sjukhus", "Berättelsegatan 5", "Brunnsbo", 66666 ));
+        destination.add(new Destination("Hem", "Räntmästaregatan 25i"));
+        destination.add(new Destination("Sjukhus", "Berättelsegatan 5"));
         return destination;
     }
 
