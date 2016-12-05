@@ -11,8 +11,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import java.util.List;
+
 import app.garvinen.leadtheway.describe.Destination;
 import app.garvinen.leadtheway.model.DestinationModel;
+import app.garvinen.leadtheway.storage.DBDestinationStore;
 
 /**
  * Created by sofiejyrkinen on 2016-11-30.
@@ -20,6 +23,9 @@ import app.garvinen.leadtheway.model.DestinationModel;
 public class DestinationAdder extends Activity {
 
     public static String LOG_TAG = DestinationAdder.class.getName();
+    private DBDestinationStore dbs;
+    private DestinationModel dm;
+    private Destination d;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +34,7 @@ public class DestinationAdder extends Activity {
         getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT); //This code is inspired by code from Stackoverflow
         initiateButtons();
 
+        dm = new DestinationModel(this);
 
         /*
         * The code below is inspired by code from Stackoverflow.
@@ -71,8 +78,10 @@ public class DestinationAdder extends Activity {
         String city = cityField.getText().toString();
         String postalCode = postalField.getText().toString();
 
-        Destination d = new Destination (icon, iconName, adress, city, postalCode);
-
+       Destination d = new Destination(icon, iconName, adress, city, postalCode);
+        Log.d(LOG_TAG, "value of d: " + (d));
+        Log.d(LOG_TAG, "value of dm: " + (dm));
+        dm.addDestination(d);
     }
 
 

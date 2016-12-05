@@ -15,7 +15,7 @@ public class SettingsNotificationsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d(LOG_TAG,"Setting Layout");
-        setContentView(R.layout.activity_settings_destination);
+        setContentView(R.layout.activity_settings_notifications);
         Log.d(LOG_TAG, "Setting Layout Done");
         //initiateButtons();
 

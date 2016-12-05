@@ -31,6 +31,4 @@ public class Destination {
         public String postalCode() {return postalCode;}
 
 
-
-
 } //end of Destination

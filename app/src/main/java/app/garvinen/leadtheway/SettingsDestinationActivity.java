@@ -15,6 +15,7 @@ import java.util.ArrayList;
 
 import app.garvinen.leadtheway.describe.Destination;
 import app.garvinen.leadtheway.model.DestinationModel;
+import app.garvinen.leadtheway.storage.DBDestinationStore;
 
 public class SettingsDestinationActivity extends AppCompatActivity {
 
@@ -22,6 +23,7 @@ public class SettingsDestinationActivity extends AppCompatActivity {
     private ListView destinationList;
     private ArrayAdapter<Destination> adapter;
     private DestinationModel dm;
+    private DBDestinationStore dbs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,18 +35,19 @@ public class SettingsDestinationActivity extends AppCompatActivity {
 
         dm = new DestinationModel(this);
 
-        destinationList = (ListView) findViewById(R.id.destination_List);
+        destinationList = (ListView) findViewById(R.id.destination_list);
         Log.d(LOG_TAG, " dest: " + dm.getDestination());
         Log.d(LOG_TAG, " dest: " + dm.getDestination());
         Log.d(LOG_TAG, " list: " + destinationList);
-/*
-        ArrayList<Destination> dests = new ArrayList<>();
-        dests.add(new Destination("Hjalmar", "", "", "", ""));*/
 
+     /*   ArrayList<Destination> dests = new ArrayList<>();
+        dests.add(new Destination("Hjalmar", "", "", "", ""));
+*/
         adapter = new ArrayAdapter<Destination>(this,
                 android.R.layout.simple_list_item_1,
                 android.R.id.text1,
                 dm.getDestination());
+                //dbs.getDestination());
                 //dests);
         Log.d(LOG_TAG, " adapter: " + adapter);
         destinationList.setAdapter(adapter);
