@@ -54,13 +54,13 @@
     <ImageView
         android:layout_width="78dp"
         android:layout_height="66dp"
-        app:srcCompat="@drawable/Activity"
+        app:srcCompat="@drawable/activity"
         android:id="@+id/imageView" />
 
     <ImageView
         android:layout_width="83dp"
         android:layout_height="68dp"
-        app:srcCompat="@drawable/Boy"
+        app:srcCompat="@drawable/boy"
         android:id="@+id/imageView2" />
 
     </LinearLayout>

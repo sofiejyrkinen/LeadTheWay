@@ -46,18 +46,19 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:layout_width="78dp"
-            android:layout_height="66dp"
-            app:srcCompat="@drawable/Activity"
-            android:id="@+id/imageView" />
+            android:layout_width="142dp"
+            android:layout_height="112dp"
+            app:srcCompat="@drawable/boy"
+            android:id="@+id/imageView6" />
 
         <ImageView
-            android:layout_width="83dp"
-            android:layout_height="68dp"
-            app:srcCompat="@drawable/Boy"
-            android:id="@+id/imageView2" />
+            android:layout_width="120dp"
+            android:layout_height="121dp"
+            app:srcCompat="@drawable/activity"
+            android:id="@+id/imageView5" />
 
     </LinearLayout>
+
     
     <TextView
         android:id="@+id/LabelIconName"

@@ -21,6 +21,16 @@ public class DestinationAdder extends Activity {
         initiateButtons();
 
         /*
+        dm = new DestinationModel(this);
+
+        destinationList = (ListView) findViewById(R.id.destination_List);
+        adapter = new ArrayAdapter<Destination>(this,
+                android.R.layout.simple_list_item_1,
+                android.R.id.text1,
+                dm.getDestination());
+        destinationList.setAdapter(adapter);
+*/
+        /*
         * The code below is inspired by code from Stackoverflow.
         * The code below we can use if we don't want the popup window to fill the whole screen
         * /
@@ -44,5 +54,25 @@ public class DestinationAdder extends Activity {
         });
 
     }//end of initiateButtons
+
+    /*
+    private ListView destinationList;
+    private ArrayAdapter<Destination> adapter;
+    private DestinationModel dm;
+
+    public void buttonClick(View view) {
+        EditText nameField  = (EditText) findViewById(R.id.TextFieldIconName);
+        EditText adressField = (EditText) findViewById(R.id.TextFieldAdress);
+
+        String icon = nameField.getText().toString();
+        String iconName = nameField.getText().toString();
+        String adress = adressField.getText().toString();
+        String city = adressField.getText().toString();
+        String postalCode = adressField.getText().toString();
+
+        Destination d = new Destination (icon, iconName, adress, city, postalCode);
+
+    }
+*/
 
 }//end of DestinationAdder
