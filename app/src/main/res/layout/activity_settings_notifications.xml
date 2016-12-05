@@ -115,12 +115,21 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/ButtonAdd"
+        android:text="Lägg till"
+        android:layout_marginTop="20sp"
+        android:layout_width="100sp"
+        android:layout_height="32dp"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/next_button"/>
+
+    <Button
         android:id="@+id/buttonNext"
         android:text="Nästa"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="#FFFFFF"
-        android:layout_marginTop="200sp"
+        android:layout_marginTop="150sp"
         android:background="@drawable/next_button"
         />
 

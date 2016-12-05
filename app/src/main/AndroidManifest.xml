@@ -24,7 +24,9 @@
             <!-- android:theme="@style/AppTheme.BehindDestAdder"> -->
         </activity>
         <activity android:name=".SettingsNotificationsActivity" />
-        <activity android:name=".SettingsActivity"></activity>
+        <activity android:name=".SettingsActivity" />
+        <activity android:name=".NotificationAdder" />
+        <activity android:name=".IconAdder"></activity>
     </application>
 
 </manifest>
