@@ -3,15 +3,23 @@ package app.garvinen.leadtheway;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
+
+import app.garvinen.leadtheway.describe.Destination;
+import app.garvinen.leadtheway.model.DestinationModel;
 
 /**
  * Created by sofiejyrkinen on 2016-11-30.
  */
 public class DestinationAdder extends Activity {
 
+    public static String LOG_TAG = DestinationAdder.class.getName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,16 +28,7 @@ public class DestinationAdder extends Activity {
         getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT); //This code is inspired by code from Stackoverflow
         initiateButtons();
 
-        /*
-        dm = new DestinationModel(this);
 
-        destinationList = (ListView) findViewById(R.id.destination_List);
-        adapter = new ArrayAdapter<Destination>(this,
-                android.R.layout.simple_list_item_1,
-                android.R.id.text1,
-                dm.getDestination());
-        destinationList.setAdapter(adapter);
-*/
         /*
         * The code below is inspired by code from Stackoverflow.
         * The code below we can use if we don't want the popup window to fill the whole screen
@@ -55,24 +54,26 @@ public class DestinationAdder extends Activity {
 
     }//end of initiateButtons
 
-    /*
-    private ListView destinationList;
-    private ArrayAdapter<Destination> adapter;
-    private DestinationModel dm;
+
 
     public void buttonClick(View view) {
+        Log.d(LOG_TAG, " button clicked");
+        EditText iconField  = (EditText) findViewById(R.id.TextFieldIcon);
         EditText nameField  = (EditText) findViewById(R.id.TextFieldIconName);
         EditText adressField = (EditText) findViewById(R.id.TextFieldAdress);
+        EditText cityField = (EditText) findViewById(R.id.TextFieldCity);
+        EditText postalField = (EditText) findViewById(R.id.TextFieldPostal);
 
-        String icon = nameField.getText().toString();
+
+        String icon = iconField.getText().toString();
         String iconName = nameField.getText().toString();
         String adress = adressField.getText().toString();
-        String city = adressField.getText().toString();
-        String postalCode = adressField.getText().toString();
+        String city = cityField.getText().toString();
+        String postalCode = postalField.getText().toString();
 
         Destination d = new Destination (icon, iconName, adress, city, postalCode);
 
     }
-*/
+
 
 }//end of DestinationAdder

@@ -7,11 +7,21 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+
+import app.garvinen.leadtheway.describe.Destination;
+import app.garvinen.leadtheway.model.DestinationModel;
 
 public class SettingsDestinationActivity extends AppCompatActivity {
 
     private static String LOG_TAG = SettingsDestinationActivity.class.getName();
+    private ListView destinationList;
+    private ArrayAdapter<Destination> adapter;
+    private DestinationModel dm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +30,24 @@ public class SettingsDestinationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_settings_destination);
         Log.d(LOG_TAG, "Setting Layout Done");
         initiateButtons();
+
+        dm = new DestinationModel(this);
+
+        destinationList = (ListView) findViewById(R.id.destination_List);
+        Log.d(LOG_TAG, " dest: " + dm.getDestination());
+        Log.d(LOG_TAG, " dest: " + dm.getDestination());
+        Log.d(LOG_TAG, " list: " + destinationList);
+/*
+        ArrayList<Destination> dests = new ArrayList<>();
+        dests.add(new Destination("Hjalmar", "", "", "", ""));*/
+
+        adapter = new ArrayAdapter<Destination>(this,
+                android.R.layout.simple_list_item_1,
+                android.R.id.text1,
+                dm.getDestination());
+                //dests);
+        Log.d(LOG_TAG, " adapter: " + adapter);
+        destinationList.setAdapter(adapter);
 
     }//end of onCreate
 
