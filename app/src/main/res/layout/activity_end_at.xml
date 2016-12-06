@@ -98,8 +98,6 @@
 
     </LinearLayout>
 
-
-
     <TextView
         android:text="Välj tid du vill vara framme:"
         android:layout_width="match_parent"
@@ -124,9 +122,5 @@
         android:layout_marginTop="20sp"
         android:background="@drawable/next_button"
         android:id="@+id/buttonNext" />
-
-
-
-
 
 </LinearLayout>
