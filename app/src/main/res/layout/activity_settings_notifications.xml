@@ -25,11 +25,12 @@
 
     <TextView
         android:id="@+id/LabelNotification"
-        android:text="Välj icon, namn och adress:"
+        android:text="Ställ in tid för dina notifikationer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="15sp"
         android:textColor="#2b2a2a"
+        android:layout_marginBottom="20sp"
         android:layout_marginTop="20sp" />
 
 <LinearLayout
@@ -38,24 +39,23 @@
     android:orientation="horizontal">
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/notField1"
         android:layout_marginTop="20sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="text"
-        android:layout_weight="2"
+        android:layout_weight="5"
         android:layout_gravity="left"
         android:text="Name"
         android:background="@drawable/custom_edit_text_field" />
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/firstMinSpinner"
+        android:layout_height="30sp"
+        android:layout_width="5sp"
         android:spinnerMode="dropdown"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:layout_gravity="right"
-        android:text="Hejhopp" />
+        android:layout_gravity="right" />
 
 </LinearLayout>
 
@@ -65,24 +65,23 @@
         android:orientation="horizontal">
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/notField2"
         android:layout_marginTop="20sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="text"
-        android:layout_weight="2"
+        android:layout_weight="5"
         android:layout_gravity="left"
         android:text="Name"
         android:background="@drawable/custom_edit_text_field" />
 
         <Spinner
-            android:id="@+id/spinner2"
+            android:id="@+id/secondMinSpinner"
             android:spinnerMode="dropdown"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="5sp"
+            android:layout_height="30sp"
             android:layout_weight="1"
-            android:layout_gravity="right"
-            android:text="Hejhopp" />
+            android:layout_gravity="right" />
 
     </LinearLayout>
 
@@ -93,24 +92,23 @@
         android:orientation="horizontal">
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/notField3"
         android:layout_marginTop="20sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="text"
-        android:layout_weight="2"
+        android:layout_weight="5"
         android:layout_gravity="left"
         android:text="Name"
         android:background="@drawable/custom_edit_text_field" />
 
         <Spinner
-            android:id="@+id/spinner3"
+            android:id="@+id/thirdMinSpinner"
             android:spinnerMode="dropdown"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="5sp"
+            android:layout_height="30sp"
             android:layout_weight="1"
-            android:layout_gravity="right"
-            android:text="Hejhopp" />
+            android:layout_gravity="right" />
 
     </LinearLayout>
 

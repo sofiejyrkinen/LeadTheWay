@@ -110,7 +110,7 @@
         android:id="@+id/LabelGoToo" />
 
     <TimePicker
-        android:id="@+id/simpleTimePicker"
+        android:id="@+id/endAtTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:timePickerMode="spinner"
