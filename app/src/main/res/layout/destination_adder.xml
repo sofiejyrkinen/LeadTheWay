@@ -32,13 +32,19 @@
 
     <TextView
         android:id="@+id/LabelIcon"
-        android:text="Skriv in namn på iconen"
-        android:layout_marginTop="20sp"
+        android:text="Välj icon"
+        android:layout_marginTop="5sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="15sp"
         android:textColor="#2b2a2a"
         />
+
+    <Spinner
+        android:id="@+id/iconAdder"
+        android:layout_height="30sp"
+        android:layout_width="match_parent"
+        android:spinnerMode="dialog" />
 
     <EditText
         android:id="@+id/TextFieldIcon"

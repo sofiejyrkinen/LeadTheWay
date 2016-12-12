@@ -6,12 +6,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
-
-import java.util.List;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import app.garvinen.leadtheway.describe.Destination;
 import app.garvinen.leadtheway.model.DestinationModel;
@@ -27,14 +26,40 @@ public class DestinationAdder extends Activity {
     private DestinationModel dm;
     private Destination d;
 
+    Spinner spinner;
+    String [] iconName ={"Activity", "Boy", "Dad", "Girl", "Home", "Hospital", "Mom", "School", "Store", "Work" };
+    int [] iconImage = {R.drawable.icon_activity, R.drawable.icon_boy, R.drawable.icon_dad,
+            R.drawable.icon_girl, R.drawable.icon_home, R.drawable.icon_hospital,
+            R.drawable.icon_mom, R.drawable.icon_school, R.drawable. icon_store, R.drawable.icon_work};
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.destination_adder);
         getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT); //This code is inspired by code from Stackoverflow
         initiateButtons();
-
         dm = new DestinationModel(this);
+
+        spinner =(Spinner)findViewById(R.id.iconAdder);
+
+        Adapter adapter = new Adapter(this, iconName, iconImage);
+        spinner.setAdapter(adapter);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
+
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(getApplicationContext(), iconName[i], Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
 
         /*
         * The code below is inspired by code from Stackoverflow.
@@ -50,6 +75,7 @@ public class DestinationAdder extends Activity {
 
     }//end of onCreate
 
+
     public void initiateButtons() {
         Button buttonClose = (Button) findViewById(R.id.buttonClose);
         buttonClose.setOnClickListener(new View.OnClickListener() {
@@ -61,8 +87,7 @@ public class DestinationAdder extends Activity {
 
     }//end of initiateButtons
 
-
-
+    //The button that adds a new destination
     public void buttonClick(View view) {
         Log.d(LOG_TAG, " button clicked");
         EditText iconField  = (EditText) findViewById(R.id.TextFieldIcon);
@@ -78,10 +103,14 @@ public class DestinationAdder extends Activity {
         String city = cityField.getText().toString();
         String postalCode = postalField.getText().toString();
 
+
        Destination d = new Destination(icon, iconName, adress, city, postalCode);
         Log.d(LOG_TAG, "value of d: " + (d));
         Log.d(LOG_TAG, "value of dm: " + (dm));
         dm.addDestination(d);
+
+        Intent intent = new Intent(DestinationAdder.this, SettingsDestinationActivity.class);
+        startActivity(intent);
     }
 
 
