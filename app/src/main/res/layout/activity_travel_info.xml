@@ -23,7 +23,7 @@
        />
 
     <ListView
-        android:id="@+id/travelList"
+        android:id="@android:id/list"
         android:layout_width="match_parent"
         android:layout_marginTop="20sp"
         android:layout_height="370sp"
