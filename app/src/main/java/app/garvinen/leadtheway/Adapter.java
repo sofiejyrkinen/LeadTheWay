@@ -25,10 +25,12 @@ public class Adapter extends ArrayAdapter <String> {
         this.iconImage = iconImage;
     }
 
+
     @Override
     public View getDropDownView(int position, View convertView, ViewGroup parent) {
 
         if(convertView == null){
+
             LayoutInflater inflater =(LayoutInflater)c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.model,null);
         }
@@ -57,7 +59,6 @@ public class Adapter extends ArrayAdapter <String> {
         //Set data
         iconText.setText(iconName[position]);
         img.setImageResource(iconImage[position]);
-
 
         return convertView;
     }

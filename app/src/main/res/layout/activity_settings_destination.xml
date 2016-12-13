@@ -41,6 +41,7 @@
         android:layout_height="32dp"
         android:textColor="#FFFFFF"
         android:background="@drawable/next_button"/>
+    
 
     <ListView
         android:id="@+id/destination_list"
