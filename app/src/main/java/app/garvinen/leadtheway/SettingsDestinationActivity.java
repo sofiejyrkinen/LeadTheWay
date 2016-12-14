@@ -11,6 +11,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+
 import app.garvinen.leadtheway.describe.Destination;
 import app.garvinen.leadtheway.model.DestinationModel;
 
@@ -37,15 +39,16 @@ public class SettingsDestinationActivity extends AppCompatActivity {
         Log.d(LOG_TAG, " dest: " + dm.getDestination());
         Log.d(LOG_TAG, " list: " + destinationList);
 
-     /* ArrayList<Destination> dests = new ArrayList<>();
-        dests.add(new Destination("Hjalmar", "", "", "", ""));*/
+     ArrayList<Destination> dests = new ArrayList<>();
+        dests.add(new Destination("Hjalmar", "", "", "", 2));
 
-        /* ArrayList<Integer> array_image = new ArrayList<Integer>();
+        /*ArrayList<Integer> array_image = new ArrayList<Integer>();
         array_image.add(R.drawable.icon_activity);
         array_image.add(R.drawable.icon_boy); */
 
 
-
+        dm.sync();
+        
         Log.d(LOG_TAG, " dest: " + dm.getDestination());
         adapter = new ArrayAdapter<Destination>(this,
                 android.R.layout.simple_list_item_1,
