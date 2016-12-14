@@ -28,7 +28,8 @@
         <activity android:name=".SettingsNotificationsActivity" />
         <activity android:name=".SettingsActivity" />
         <activity android:name=".NotificationAdder" />
-        <activity android:name=".IconAdder"></activity>
+        <activity android:name=".IconAdder" />
+        <activity android:name=".TravelInfoActivity"></activity>
     </application>
 
 </manifest>

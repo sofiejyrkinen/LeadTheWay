@@ -1,15 +1,21 @@
 package app.garvinen.leadtheway;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.Spinner;
 
 public class SettingsNotificationsActivity extends AppCompatActivity {
 
     private static String LOG_TAG = SettingsDestinationActivity.class.getName();
+    Spinner spinner;
+    ArrayAdapter<CharSequence> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,7 +23,9 @@ public class SettingsNotificationsActivity extends AppCompatActivity {
         Log.d(LOG_TAG,"Setting Layout");
         setContentView(R.layout.activity_settings_notifications);
         Log.d(LOG_TAG, "Setting Layout Done");
-        //initiateButtons();
+        initiateSpinner();
+        initiateButtons();
+
 
     }//end of onCreate
 
@@ -63,6 +71,38 @@ public class SettingsNotificationsActivity extends AppCompatActivity {
     }
 
 
+    /*
+     * A method that sets the values for the spinners
+     */
+    public void initiateSpinner(){
+        spinner =(Spinner)findViewById(R.id.firstMinSpinner);
+        adapter = ArrayAdapter.createFromResource(this, R.array.minutes_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
+        spinner =(Spinner)findViewById(R.id.secondMinSpinner);
+        adapter = ArrayAdapter.createFromResource(this, R.array.minutes_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
+        spinner =(Spinner)findViewById(R.id.thirdMinSpinner);
+        adapter = ArrayAdapter.createFromResource(this, R.array.minutes_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
+    } //end of initiateSpinner
+
+    public void initiateButtons(){
+
+        Button buttonNext =(Button) findViewById(R.id.buttonNext);
+        buttonNext.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent intent = new Intent(SettingsNotificationsActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+    }//end of initiateButtons
 
 
 }//end of SettingsNotificationsActivity

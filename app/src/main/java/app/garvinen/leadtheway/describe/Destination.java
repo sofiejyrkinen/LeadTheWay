@@ -6,14 +6,14 @@ package app.garvinen.leadtheway.describe;
 
 public class Destination {
 
-    private String icon;
+
     private String iconName;
     private String adress;
     private String city;
     private String postalCode;
 
-    public Destination(String icon, String iconName, String adress, String city, String postalCode) {
-        this.icon = icon;
+    public Destination(String iconName, String adress, String city, String postalCode) {
+
         this.iconName = iconName;
         this.adress = adress;
         this.city = city;
@@ -22,9 +22,9 @@ public class Destination {
 
     @Override
     public String toString() {
-        return icon + " | " + iconName  + " | " + adress + ", " + city + ", " + postalCode;}
+        return iconName  + " | " + adress + ", " + city + ", " + postalCode;}
 
-        public String icon() {return icon;}
+
         public String iconName() {return iconName;}
         public String adress() {return adress;}
         public String city() {return city;}
