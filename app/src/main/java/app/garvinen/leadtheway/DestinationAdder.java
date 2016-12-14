@@ -83,21 +83,19 @@ public class DestinationAdder extends Activity {
     public void buttonClick(View view) {
         Log.d(LOG_TAG, " button clicked");
 
-        EditText iconField  = (EditText) findViewById(R.id.TextFieldIcon);
         EditText nameField  = (EditText) findViewById(R.id.TextFieldIconName);
         EditText adressField = (EditText) findViewById(R.id.TextFieldAdress);
         EditText cityField = (EditText) findViewById(R.id.TextFieldCity);
         EditText postalField = (EditText) findViewById(R.id.TextFieldPostal);
 
-        String icon = iconField.getText().toString();
         String iconName = nameField.getText().toString();
-
         String adress = adressField.getText().toString();
         String city = cityField.getText().toString();
         String postalCode = postalField.getText().toString();
+        int iconId = 1;
 
 
-       Destination d = new Destination(icon, iconName, adress, city, postalCode);
+       Destination d = new Destination(iconName, adress, city, postalCode, iconId);
         Log.d(LOG_TAG, "value of d: " + (d));
 
         Log.d(LOG_TAG, "value of dm: " + (dm));
