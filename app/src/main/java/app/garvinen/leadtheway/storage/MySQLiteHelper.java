@@ -57,6 +57,10 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         Log.d(LOG_TAG, "Skapar den goe dbn");
         database.execSQL(TABLE_DEST_CREATE);
         database.execSQL(TABLE_ICONS_CREATE);
+
+        database.execSQL("INSERT INTO " + TABLE_ICONS + " VALUES (R.drawable.icon_activity)");
+        database.execSQL("INSERT INTO " + TABLE_ICONS + " VALUES (R.drawable.icon_boy)");
+
     }
 
     @Override
