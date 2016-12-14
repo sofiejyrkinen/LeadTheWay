@@ -11,4 +11,9 @@ public class StorageProvider {
         return new DBDestinationStore(c);
 
     }
+
+    public static IconStore getIconProvider(Context c){
+        return new DBIconStore(c);
+    }
+
 }//end of StorageProvider

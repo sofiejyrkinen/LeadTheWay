@@ -30,7 +30,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 
     private static final String LOG_TAG = MySQLiteHelper.class.getName();
 
-    // Database creation sql statement
+    // Database creation sql statement for Destination Table
     private static final String TABLE_DEST_CREATE = "create table "
             + TABLE_DESTINATIONS
             + "( "
@@ -41,11 +41,11 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
             + COLUMN_POSTALCODE  +  " text not null);"
             + COLUMN_ICONSICONID  +  " text not null);";
 
+    // Database creation sql statement for Icons Table
     private static final String TABLE_ICONS_CREATE = "create table "
             + TABLE_ICONS
             + "( "
-            + COLUMN_ID     + " integer primary key autoincrement, "
-            + COLUMN_ICONID   +  " text not null,"
+            + COLUMN_ICONID     + " integer primary key autoincrement, "
             + COLUMN_ICONPATH   +  " text not null,";
 
     public MySQLiteHelper(Context context) {

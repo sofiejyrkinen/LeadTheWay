@@ -11,13 +11,15 @@ public class Destination {
     private String adress;
     private String city;
     private String postalCode;
+    private long iconId;
 
-    public Destination(String iconName, String adress, String city, String postalCode) {
+    public Destination(String iconName, String adress, String city, String postalCode, long iconId) {
 
         this.iconName = iconName;
         this.adress = adress;
         this.city = city;
         this.postalCode = postalCode;
+        this.iconId = iconId;
     }
 
     @Override
@@ -29,6 +31,7 @@ public class Destination {
         public String adress() {return adress;}
         public String city() {return city;}
         public String postalCode() {return postalCode;}
+        public long iconId() {return iconId;}
 
 
 } //end of Destination

@@ -24,11 +24,11 @@ public class DBDestinationStore implements DestinationStore {
     private SQLiteDatabase database;
     private MySQLiteHelper dbHelper;
     private String[] allColumns = { MySQLiteHelper.COLUMN_ID,
-            MySQLiteHelper.COLUMN_ICON,
             MySQLiteHelper.COLUMN_ICONNAME,
             MySQLiteHelper.COLUMN_ADRESS,
             MySQLiteHelper.COLUMN_CITY,
-            MySQLiteHelper.COLUMN_POSTALCODE };
+            MySQLiteHelper.COLUMN_POSTALCODE,
+            MySQLiteHelper.COLUMN_ICONID };
 
     public DBDestinationStore(Context context)  {
         dbHelper = new MySQLiteHelper(context);
@@ -42,11 +42,11 @@ public class DBDestinationStore implements DestinationStore {
     public Destination createDestination(Destination d) {
         ContentValues values = new ContentValues();
 
-        values.put(MySQLiteHelper.COLUMN_ICON, d.icon());
         values.put(MySQLiteHelper.COLUMN_ICONNAME, d.iconName());
         values.put(MySQLiteHelper.COLUMN_ADRESS, d.adress());
         values.put(MySQLiteHelper.COLUMN_CITY, d.city());
         values.put(MySQLiteHelper.COLUMN_POSTALCODE, d.postalCode());
+        values.put(MySQLiteHelper.COLUMN_ICONID, d.iconId());
 
         long insertId = database.insert(MySQLiteHelper.TABLE_DESTINATIONS, null,
                 values);
@@ -62,12 +62,12 @@ public class DBDestinationStore implements DestinationStore {
 
     private Destination cursorToDestination(Cursor cursor) {
         long id = cursor.getLong(0);
-        String icon = cursor.getString(1);
-        String iconName = cursor.getString(2);
-        String adress = cursor.getString(3);
-        String city = cursor.getString(4);
-        String postalCode = cursor.getString(5);
-        return new Destination(icon, iconName, adress, city, postalCode);
+        String iconName = cursor.getString(1);
+        String adress = cursor.getString(2);
+        String city = cursor.getString(3);
+        String postalCode = cursor.getString(4);
+        long iconId = cursor.getLong(5);
+        return new Destination(iconName, adress, city, postalCode, iconId);
     }
 
     public void open() throws SQLException {
