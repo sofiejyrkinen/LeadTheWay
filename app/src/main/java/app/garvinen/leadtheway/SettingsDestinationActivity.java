@@ -23,7 +23,7 @@ public class SettingsDestinationActivity extends AppCompatActivity {
     private ListView destinationList;
     private ArrayAdapter<Destination> adapter;
     private DestinationModel dm;
-    private DBDestinationStore dbs;
+    //private DBDestinationStore dbs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +43,10 @@ public class SettingsDestinationActivity extends AppCompatActivity {
      /*   ArrayList<Destination> dests = new ArrayList<>();
         dests.add(new Destination("Hjalmar", "", "", "", ""));
 */
+
+
+
+        Log.d(LOG_TAG, " dest: " + dm.getDestination());
         adapter = new ArrayAdapter<Destination>(this,
                 android.R.layout.simple_list_item_1,
                 android.R.id.text1,

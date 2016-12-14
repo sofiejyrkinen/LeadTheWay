@@ -4,6 +4,7 @@ import android.content.Context;
 import java.util.List;
 import app.garvinen.leadtheway.describe.Destination;
 import app.garvinen.leadtheway.storage.StorageProvider;
+import app.garvinen.leadtheway.storage.VTSync;
 
 
 /**
@@ -12,6 +13,7 @@ import app.garvinen.leadtheway.storage.StorageProvider;
 
 public class DestinationModel {
 
+    public VTSync vts;
 
     private Context c;
 
@@ -27,5 +29,8 @@ public class DestinationModel {
         StorageProvider.getProvider(c).addDestination(d);
     }
 
+    public void sync(){
+        vts.syncVT();
+    }
 
 } //end of DestinationModel

@@ -74,12 +74,14 @@ public class DestinationAdder extends Activity {
 
         String icon = iconField.getText().toString();
         String iconName = nameField.getText().toString();
+
         String adress = adressField.getText().toString();
         String city = cityField.getText().toString();
         String postalCode = postalField.getText().toString();
 
        Destination d = new Destination(icon, iconName, adress, city, postalCode);
         Log.d(LOG_TAG, "value of d: " + (d));
+
         Log.d(LOG_TAG, "value of dm: " + (dm));
         dm.addDestination(d);
     }
