@@ -38,15 +38,15 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
             + COLUMN_ICONNAME   +  " text not null,"
             + COLUMN_ADRESS   +  " text not null,"
             + COLUMN_CITY   +  " text not null,"
-            + COLUMN_POSTALCODE  +  " text not null);"
-            + COLUMN_ICONSICONID  +  " text not null);";
+            + COLUMN_POSTALCODE  +  " text not null,"
+            + COLUMN_ICONSICONID  +  " integer not null);";
 
     // Database creation sql statement for Icons Table
     private static final String TABLE_ICONS_CREATE = "create table "
             + TABLE_ICONS
             + "( "
             + COLUMN_ICONID     + " integer primary key autoincrement, "
-            + COLUMN_ICONPATH   +  " text not null,";
+            + COLUMN_ICONPATH   +  " text not null);";
 
     public MySQLiteHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -54,6 +54,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase database) {
+        Log.d(LOG_TAG, "Skapar den goe dbn");
         database.execSQL(TABLE_DEST_CREATE);
         database.execSQL(TABLE_ICONS_CREATE);
     }

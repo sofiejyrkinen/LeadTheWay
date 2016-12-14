@@ -92,7 +92,7 @@ public class DestinationAdder extends Activity {
         String adress = adressField.getText().toString();
         String city = cityField.getText().toString();
         String postalCode = postalField.getText().toString();
-        int iconId = 1;
+        long iconId = 1;
 
 
        Destination d = new Destination(iconName, adress, city, postalCode, iconId);
