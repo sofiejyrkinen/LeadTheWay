@@ -45,10 +45,8 @@ public class SettingsDestinationActivity extends AppCompatActivity {
         /*ArrayList<Integer> array_image = new ArrayList<Integer>();
         array_image.add(R.drawable.icon_activity);
         array_image.add(R.drawable.icon_boy); */
-
-
-        dm.sync();
         
+
         Log.d(LOG_TAG, " dest: " + dm.getDestination());
         adapter = new ArrayAdapter<Destination>(this,
                 android.R.layout.simple_list_item_1,
