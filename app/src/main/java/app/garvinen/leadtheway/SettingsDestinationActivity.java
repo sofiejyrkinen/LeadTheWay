@@ -40,9 +40,9 @@ public class SettingsDestinationActivity extends AppCompatActivity {
         Log.d(LOG_TAG, " dest: " + dm.getDestination());
         Log.d(LOG_TAG, " list: " + destinationList);
 
-     /*   ArrayList<Destination> dests = new ArrayList<>();
-        dests.add(new Destination("Hjalmar", "", "", "", ""));
-*/
+        /*ArrayList<Destination> dests = new ArrayList<>();
+            dests.add(new Destination("Hjalmar", "", "", "", "")); */
+
 
 
 
@@ -55,7 +55,7 @@ public class SettingsDestinationActivity extends AppCompatActivity {
                 //dests);
         Log.d(LOG_TAG, " adapter: " + adapter);
         destinationList.setAdapter(adapter);
-
+        dm.sync();
     }//end of onCreate
 
 
