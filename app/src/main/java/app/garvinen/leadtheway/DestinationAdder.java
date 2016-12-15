@@ -2,19 +2,23 @@ package app.garvinen.leadtheway;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import app.garvinen.leadtheway.describe.Destination;
+import app.garvinen.leadtheway.describe.Icon;
 import app.garvinen.leadtheway.model.DestinationModel;
+import app.garvinen.leadtheway.model.IconModel;
 import app.garvinen.leadtheway.storage.DBDestinationStore;
+import app.garvinen.leadtheway.storage.DBIconStore;
 
 /**
  * Created by sofiejyrkinen on 2016-11-30.
@@ -22,17 +26,25 @@ import app.garvinen.leadtheway.storage.DBDestinationStore;
 public class DestinationAdder extends Activity {
 
     public static String LOG_TAG = DestinationAdder.class.getName();
+
     private DBDestinationStore dbs;
     private DestinationModel dm;
     private Destination d;
+    private DBIconStore dbis;
+    private IconModel im;
+    private Icon i;
+    private ArrayAdapter<Icon> adapter;
+    private ListView iconList;
 
-    Spinner spinner;
-    String [] iconName ={"Activity", "Boy", "Dad", "Girl", "Home", "Hospital", "Mom", "School", "Store", "Work" };
+    private Cursor cursor;
+    private Spinner spinner;
+
+    /*String [] iconName ={"Activity", "Boy", "Dad", "Girl", "Home", "Hospital", "Mom", "School", "Store", "Work" };
     public int nameIcon;
 
     int [] iconImage = {R.drawable.icon_activity, R.drawable.icon_boy, R.drawable.icon_dad,
             R.drawable.icon_girl, R.drawable.icon_home, R.drawable.icon_hospital,
-            R.drawable.icon_mom, R.drawable.icon_school, R.drawable. icon_store, R.drawable.icon_work};
+            R.drawable.icon_mom, R.drawable.icon_school, R.drawable. icon_store, R.drawable.icon_work}; */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +54,11 @@ public class DestinationAdder extends Activity {
         initiateButtons();
         initiateSpinner();
         dm = new DestinationModel(this);
+
+        /*
+        ArrayList<Integer> array_image = new ArrayList<Integer>();
+        array_image.add(R.drawable.icon_activity);
+        array_image.add(R.drawable.icon_boy); */
 
     }//end of onCreate
 
@@ -58,6 +75,26 @@ public class DestinationAdder extends Activity {
     }//end of initiateButtons
 
     public void initiateSpinner(){
+
+        im = new IconModel(this);
+        spinner = (Spinner) findViewById(R.id.iconAdder);
+        Log.d(LOG_TAG, " icon: " + im.getIcon());
+        Log.d(LOG_TAG, " iconlist: " + iconList);
+
+        adapter = new ArrayAdapter<Icon>(this, android.R.layout.simple_list_item_1,
+                android.R.id.text1,
+                im.getIcon());
+
+        Log.d(LOG_TAG, " adapter: " + adapter);
+        spinner.setAdapter(adapter);
+
+        /*while (cursor.moveToNext()) {
+
+            im.add(cursor.getString(cursor.getColumnIndex("ICONPATH")));
+        } */
+
+
+        /*
         spinner =(Spinner)findViewById(R.id.iconAdder);
 
         Adapter adapter = new Adapter(this, iconName, iconImage);
@@ -76,7 +113,7 @@ public class DestinationAdder extends Activity {
             public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
-        });
+        });*/
     }
 
     //The button that adds a new destination
@@ -92,7 +129,7 @@ public class DestinationAdder extends Activity {
         String adress = adressField.getText().toString();
         String city = cityField.getText().toString();
         String postalCode = postalField.getText().toString();
-        int iconId = 1;
+        long iconId = 1;
 
 
        Destination d = new Destination(iconName, adress, city, postalCode, iconId);

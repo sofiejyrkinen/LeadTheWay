@@ -13,6 +13,10 @@ private int iconPath;
         this.iconPath =iconPath;
     }
 
+    @Override
+    public String toString() {
+        return "Hallå";}
+
     public int iconPath() {return iconPath;}
 
 

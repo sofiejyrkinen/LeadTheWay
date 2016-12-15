@@ -47,8 +47,15 @@
         android:id="@+id/destination_list"
         android:layout_width="match_parent"
         android:layout_marginTop="20sp"
-        android:layout_height="270sp"
+        android:layout_height="100sp"
        />
+
+    <ListView
+        android:id="@+id/iconList"
+        android:layout_width="match_parent"
+        android:layout_marginTop="20sp"
+        android:layout_height="100sp"
+        />
 
     <Button
         android:id="@+id/buttonNext"
