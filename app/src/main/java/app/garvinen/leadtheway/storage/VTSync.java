@@ -29,21 +29,26 @@ public class VTSync {
     public VTSync(Context c) {
         this.c = c;
     }
+    //Log.d(LOG_TAG, "Första!");
 
     public void syncVT() {
-
+        Log.d(LOG_TAG, "Andra!");
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(c);
         String url = "http://www.sunet.se";
 
+        Log.d(LOG_TAG, "Tredje!");
         // Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(com.android.volley.Request.Method.GET, url,
                 new Response.Listener<String>() {
+
                     @Override
                     public void onResponse(String response) {
                         // Display the first 500 characters of the response string.
                         Log.d(LOG_TAG, "Response is: " + response.substring(0, 500));
+                        Log.d(LOG_TAG, "Femte!");
                     }
+
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
@@ -51,6 +56,7 @@ public class VTSync {
             }
         });
 // Add the request to the RequestQueue.
+        Log.d(LOG_TAG, "Sjätte!");
         queue.add(stringRequest);
     }
 }
