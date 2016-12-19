@@ -5,6 +5,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import app.garvinen.leadtheway.R;
+
 /**
  * Created by Axel on 2016-12-02.
  */
@@ -46,7 +48,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
             + TABLE_ICONS
             + "( "
             + COLUMN_ICONID     + " integer primary key autoincrement, "
-            + COLUMN_ICONPATH   +  " text not null);";
+            + COLUMN_ICONPATH   +  " integer not null);";
 
     public MySQLiteHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -58,8 +60,8 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         database.execSQL(TABLE_DEST_CREATE);
         database.execSQL(TABLE_ICONS_CREATE);
 
-        database.execSQL("INSERT INTO " + TABLE_ICONS + " VALUES (R.drawable.icon_activity)");
-        database.execSQL("INSERT INTO " + TABLE_ICONS + " VALUES (R.drawable.icon_boy)");
+        database.execSQL("INSERT INTO " + TABLE_ICONS + " VALUES (1, " + R.drawable.icon_activity + ")");
+        database.execSQL("INSERT INTO " + TABLE_ICONS + " VALUES (2, " + R.drawable.icon_boy + ")");
 
     }
 

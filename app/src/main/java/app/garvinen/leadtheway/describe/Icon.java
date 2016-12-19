@@ -6,18 +6,22 @@ package app.garvinen.leadtheway.describe;
 
 public class Icon {
 
-private int iconPath;
+private String iconPath;
 
-    public Icon (int iconPath){
+    public Icon (String iconPath){
 
         this.iconPath =iconPath;
     }
 
     @Override
     public String toString() {
-        return "Hallå";}
+        return "Hallå Liverpool";
+    }
 
-    public int iconPath() {return iconPath;}
+    // Get new path
+    public String iconPath() {
+        return iconPath;
+    }
 
 
 }
