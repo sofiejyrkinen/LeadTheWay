@@ -13,7 +13,7 @@ import app.garvinen.leadtheway.storage.VTSync;
 
 public class DestinationModel {
 
-    public VTSync vts;
+    //private VTSync vts;
 
     private Context c;
 
@@ -29,8 +29,6 @@ public class DestinationModel {
         StorageProvider.getProvider(c).addDestination(d);
     }
 
-    public void sync(){
-        vts.syncVT();
-    }
+
 
 } //end of DestinationModel

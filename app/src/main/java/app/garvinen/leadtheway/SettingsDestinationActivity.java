@@ -13,6 +13,7 @@ import android.widget.ListView;
 
 import app.garvinen.leadtheway.describe.Destination;
 import app.garvinen.leadtheway.model.DestinationModel;
+import app.garvinen.leadtheway.storage.VTSync;
 
 public class SettingsDestinationActivity extends AppCompatActivity {
 
@@ -20,6 +21,7 @@ public class SettingsDestinationActivity extends AppCompatActivity {
     private ListView destinationList;
     private ArrayAdapter<Destination> adapter;
     private DestinationModel dm;
+    private VTSync vts;
     //private DBDestinationStore dbs;
 
     @Override
@@ -30,12 +32,17 @@ public class SettingsDestinationActivity extends AppCompatActivity {
         Log.d(LOG_TAG, "Setting Layout Done");
         initiateButtons();
 
+
+        vts = new VTSync(this);
         dm = new DestinationModel(this);
+
+        //dm.sync();
 
         destinationList = (ListView) findViewById(R.id.destination_list);
         Log.d(LOG_TAG, " dest: " + dm.getDestination());
         Log.d(LOG_TAG, " dest: " + dm.getDestination());
         Log.d(LOG_TAG, " list: " + destinationList);
+        vts.syncVT();
 
      /*ArrayList<Destination> dests = new ArrayList<>();
         dests.add(new Destination("Hjalmar", "Hej", "Hopp", "Lopp", 2)); */
