@@ -20,6 +20,7 @@ import app.garvinen.leadtheway.describe.Icon;
 public class DBIconStore implements IconStore{
 
     private static DBIconStore storage ;
+    public static String LOG_TAG = DBIconStore.class.getName();
 
     // Database fields
     private SQLiteDatabase database;
@@ -54,11 +55,13 @@ public class DBIconStore implements IconStore{
         return newIcon;
     }
 
+
     private Icon cursorToIcon(Cursor cursor) {
         long iconId = cursor.getLong(0);
-        int iconPath = cursor.getInt(1);
+        String iconPath = cursor.getString(1);
         return new Icon(iconPath);
     }
+
 
     public void open() throws SQLException {
         database = dbHelper.getWritableDatabase();
@@ -68,9 +71,11 @@ public class DBIconStore implements IconStore{
         dbHelper.close();
     }
 
+
     @Override
     public List<Icon> getIcon() {
         List<Icon> icon = new ArrayList<>();
+        //icon.add(R.drawable.icon_boy);
 
         Cursor cursor = database.query(MySQLiteHelper.TABLE_ICONS,
                 allColumns, null, null, null, null, null);
@@ -85,6 +90,7 @@ public class DBIconStore implements IconStore{
         cursor.close();
         return icon;
     }
+
 
     public void addIcon(Icon i) {
         createIcon(i);

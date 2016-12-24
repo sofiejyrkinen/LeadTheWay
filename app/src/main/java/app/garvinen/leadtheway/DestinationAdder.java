@@ -13,6 +13,8 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 
+import java.util.ArrayList;
+
 import app.garvinen.leadtheway.describe.Destination;
 import app.garvinen.leadtheway.describe.Icon;
 import app.garvinen.leadtheway.model.DestinationModel;
@@ -40,7 +42,7 @@ public class DestinationAdder extends Activity {
     private Spinner spinner;
 
     /*String [] iconName ={"Activity", "Boy", "Dad", "Girl", "Home", "Hospital", "Mom", "School", "Store", "Work" };
-    public int nameIcon;
+
 
     int [] iconImage = {R.drawable.icon_activity, R.drawable.icon_boy, R.drawable.icon_dad,
             R.drawable.icon_girl, R.drawable.icon_home, R.drawable.icon_hospital,
@@ -76,37 +78,48 @@ public class DestinationAdder extends Activity {
 
     public void initiateSpinner(){
 
+        /*
+        //Henrik provar 1
         im = new IconModel(this);
         spinner = (Spinner) findViewById(R.id.iconAdder);
         Log.d(LOG_TAG, " icon: " + im.getIcon());
         Log.d(LOG_TAG, " iconlist: " + iconList);
 
-        adapter = new ArrayAdapter<Icon>(this, android.R.layout.simple_list_item_1,
-                android.R.id.text1,
-                im.getIcon());
+        ArrayList<Icon> SOJY = new ArrayList<>();
+        SOJY.add(new Icon(666));
+        SOJY.add(new Icon(667));
 
+        adapter = new ArrayAdapter<Icon>((Context)this,
+                android.R.layout.simple_spinner_item,
+                android.R.id.text1,
+                SOJY);
+
+        Log.d(LOG_TAG, " icon: " + im.getIcon());
         Log.d(LOG_TAG, " adapter: " + adapter);
         spinner.setAdapter(adapter);
 
-        /*while (cursor.moveToNext()) {
-
-            im.add(cursor.getString(cursor.getColumnIndex("ICONPATH")));
-        } */
-
-
+*/
+        //Jag provar 2
         /*
+        im = new IconModel(this);
+        Log.d(LOG_TAG, " icon: " + im.getIcon());
+        Log.d(LOG_TAG, " iconlist: " + iconList);
         spinner =(Spinner)findViewById(R.id.iconAdder);
 
-        Adapter adapter = new Adapter(this, iconName, iconImage);
-        spinner.setAdapter(adapter);
+        ArrayList<Icon> SOJY = new ArrayList<>();
+        SOJY.add(new Icon("Tjohej"));
+        SOJY.add(new Icon("Tjoho"));
+
+        MyAdapter adapt = new MyAdapter(this,SOJY);
+        spinner.setAdapter(adapt);
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
 
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(getApplicationContext(), iconName[i], Toast.LENGTH_SHORT).show();
-                Log.d(LOG_TAG, " iconImage: " + iconImage[i]);
-                nameIcon = iconImage[i];
+                Toast.makeText(getApplicationContext(), "Kajkaj", Toast.LENGTH_SHORT).show();
+                //Log.d(LOG_TAG, " iconImage: " + iconImage[i]);
+                //nameIcon = iconImage[i];
             }
 
             @Override
@@ -114,7 +127,17 @@ public class DestinationAdder extends Activity {
 
             }
         });*/
-    }
+
+        //Jag provar 3
+        ArrayList<Icon> myIcons = new ArrayList<>();
+        myIcons.add(new Icon("icon_activity"));
+        myIcons.add(new Icon("icon_boy"));
+
+        ArrayAdapter<Icon> adapter = new MyAdapter(this, 0, myIcons);
+
+        Spinner spinner = (Spinner)findViewById(R.id.iconAdder);
+        spinner.setAdapter(adapter);
+    } //end of initiateSpinner
 
     //The button that adds a new destination
     public void buttonClick(View view) {

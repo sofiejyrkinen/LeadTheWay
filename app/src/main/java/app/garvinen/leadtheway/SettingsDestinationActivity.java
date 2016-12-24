@@ -48,8 +48,7 @@ public class SettingsDestinationActivity extends AppCompatActivity {
         dests.add(new Destination("Hjalmar", "Hej", "Hopp", "Lopp", 2)); */
 
         Log.d(LOG_TAG, " dest: " + dm.getDestination());
-        adapter = new ArrayAdapter<Destination>(this,
-                android.R.layout.simple_list_item_1,
+        adapter = new ArrayAdapter<Destination>(this, android.R.layout.simple_list_item_1,
                 android.R.id.text1,
                 dm.getDestination());
                 //dbs.getDestination());
