@@ -34,17 +34,19 @@ public class VTSync {
     }
     //Log.d(LOG_TAG, "Första!");
 
-    public void syncVT() {
+    //String url = "https://api.vasttrafik.se/bin/rest.exe/v2/location.nearbyaddress?originCoordLong=11.981211&originCoordLat=57.709792&format=json";
+
+    public void syncVT(String url) {
         Log.d(LOG_TAG, "Andra!");
         // Instantiate the RequestQueue.
 
-        String key = "98eb573a1bad4d1640855da3bad8da72";
+        String key = "047795f4bf68cde869de5ff9161d9b00";
         final Map<String, String> mHeaders = new ArrayMap<String, String>();
         mHeaders.put("authKey",key);
         mHeaders.put("Authorization", "Bearer " + key);
         RequestQueue queue = Volley.newRequestQueue(c);
         //String url = "https://www.sunet.se";
-        String url = "https://api.vasttrafik.se/bin/rest.exe/v2/location.nearbystops?originCoordLong=11.9&originCoordLat=57.7&maxNo=3&format=json";
+
         Log.d(LOG_TAG, "Tredje!");
         // Request a string response from the provided URL.
 
@@ -54,8 +56,9 @@ public class VTSync {
                 @Override
                 public void onResponse(String response) {
                     // Display the first 500 characters of the response string.
-                    Log.d(LOG_TAG, "Response is: " + response.substring(0, 500));
                     Log.d(LOG_TAG, "Femte!");
+                    Log.d(LOG_TAG, "Response is: " + response.substring(0, 500));
+
                 }
                 }, new Response.ErrorListener() {
                     @Override
