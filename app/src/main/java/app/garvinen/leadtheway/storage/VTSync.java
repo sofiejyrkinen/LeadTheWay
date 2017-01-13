@@ -1,14 +1,10 @@
 package app.garvinen.leadtheway.storage;
 
 import android.app.Activity;
-import android.app.DownloadManager;
 import android.content.Context;
 import android.util.ArrayMap;
 import android.util.Log;
-//import android.widget.TextView;
-//import com.android.volley.R;
 
-//import com.android.volley.Request.Method.GET;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -17,7 +13,9 @@ import com.android.volley.toolbox.Volley;
 
 import java.util.Map;
 
-import app.garvinen.leadtheway.R;
+//import android.widget.TextView;
+//import com.android.volley.R;
+//import com.android.volley.Request.Method.GET;
 
 /**
  * Created by Axel on 2016-12-12.
@@ -34,9 +32,9 @@ public class VTSync {
     }
     //Log.d(LOG_TAG, "Första!");
 
-    //String url = "https://api.vasttrafik.se/bin/rest.exe/v2/location.nearbyaddress?originCoordLong=11.981211&originCoordLat=57.709792&format=json";
+    String url = "https://api.vasttrafik.se/bin/rest.exe/v2/location.nearbyaddress?originCoordLong=11.981211&originCoordLat=57.709792&format=json";
 
-    public void syncVT(String url) {
+    public void syncVT() {
         Log.d(LOG_TAG, "Andra!");
         // Instantiate the RequestQueue.
 

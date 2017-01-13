@@ -6,12 +6,12 @@ package app.garvinen.leadtheway.describe;
 
 public class Icon {
 
-private String iconPath;
+    private int iconPath;
 
-    public Icon (String iconPath){
-
+    public Icon (int iconPath){
         this.iconPath =iconPath;
     }
+
 
     @Override
     public String toString() {
@@ -19,9 +19,8 @@ private String iconPath;
     }
 
     // Get new path
-    public String iconPath() {
+    public int iconPath() {
         return iconPath;
     }
-
 
 }

@@ -48,7 +48,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
             + TABLE_ICONS
             + "( "
             + COLUMN_ICONID     + " integer primary key autoincrement, "
-            + COLUMN_ICONPATH   +  " integer not null);";
+            + COLUMN_ICONPATH   +  " text not null);";
 
     public MySQLiteHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -60,9 +60,16 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         database.execSQL(TABLE_DEST_CREATE);
         database.execSQL(TABLE_ICONS_CREATE);
 
-        database.execSQL("INSERT INTO " + TABLE_ICONS + " VALUES (1, " + R.drawable.icon_activity + ")");
-        database.execSQL("INSERT INTO " + TABLE_ICONS + " VALUES (2, " + R.drawable.icon_boy + ")");
-
+        database.execSQL("INSERT INTO " + TABLE_ICONS + " VALUES (1, " + R.drawable.icon_home + ")");
+        database.execSQL("INSERT INTO " + TABLE_ICONS + " VALUES (2, " + R.drawable.icon_work + ")");
+        database.execSQL("INSERT INTO " + TABLE_ICONS + " VALUES (3, " + R.drawable.icon_store + ")");
+        database.execSQL("INSERT INTO " + TABLE_ICONS + " VALUES (4, " + R.drawable.icon_boy + ")");
+        database.execSQL("INSERT INTO " + TABLE_ICONS + " VALUES (5, " + R.drawable.icon_girl + ")");
+        database.execSQL("INSERT INTO " + TABLE_ICONS + " VALUES (6, " + R.drawable.icon_dad + ")");
+        database.execSQL("INSERT INTO " + TABLE_ICONS + " VALUES (7, " + R.drawable.icon_mom + ")");
+        database.execSQL("INSERT INTO " + TABLE_ICONS + " VALUES (8, " + R.drawable.icon_activity + ")");
+        database.execSQL("INSERT INTO " + TABLE_ICONS + " VALUES (9, " + R.drawable.icon_school + ")");
+        database.execSQL("INSERT INTO " + TABLE_ICONS + " VALUES (10, " + R.drawable.icon_hospital + ")");
     }
 
     @Override

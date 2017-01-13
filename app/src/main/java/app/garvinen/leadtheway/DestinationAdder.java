@@ -7,11 +7,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -37,16 +39,11 @@ public class DestinationAdder extends Activity {
     private Icon i;
     private ArrayAdapter<Icon> adapter;
     private ListView iconList;
-
     private Cursor cursor;
     private Spinner spinner;
+    public static int spinn;
+    public ArrayList<Icon> myIcons = new ArrayList<>();
 
-    /*String [] iconName ={"Activity", "Boy", "Dad", "Girl", "Home", "Hospital", "Mom", "School", "Store", "Work" };
-
-
-    int [] iconImage = {R.drawable.icon_activity, R.drawable.icon_boy, R.drawable.icon_dad,
-            R.drawable.icon_girl, R.drawable.icon_home, R.drawable.icon_hospital,
-            R.drawable.icon_mom, R.drawable.icon_school, R.drawable. icon_store, R.drawable.icon_work}; */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,11 +53,6 @@ public class DestinationAdder extends Activity {
         initiateButtons();
         initiateSpinner();
         dm = new DestinationModel(this);
-
-        /*
-        ArrayList<Integer> array_image = new ArrayList<Integer>();
-        array_image.add(R.drawable.icon_activity);
-        array_image.add(R.drawable.icon_boy); */
 
     }//end of onCreate
 
@@ -78,84 +70,56 @@ public class DestinationAdder extends Activity {
 
     public void initiateSpinner(){
 
-        /*
-        //Henrik provar 1
         im = new IconModel(this);
-        spinner = (Spinner) findViewById(R.id.iconAdder);
-        Log.d(LOG_TAG, " icon: " + im.getIcon());
-        Log.d(LOG_TAG, " iconlist: " + iconList);
 
-        ArrayList<Icon> SOJY = new ArrayList<>();
-        SOJY.add(new Icon(666));
-        SOJY.add(new Icon(667));
+        final Spinner spinner = (Spinner)findViewById(R.id.iconAdder);
 
-        adapter = new ArrayAdapter<Icon>((Context)this,
-                android.R.layout.simple_spinner_item,
-                android.R.id.text1,
-                SOJY);
+        Log.d(LOG_TAG, " im: " + im.getIcon());
+        Log.d(LOG_TAG, " list: " + spinner);
+        Log.d(LOG_TAG, " im: " + im.getIcon());
 
-        Log.d(LOG_TAG, " icon: " + im.getIcon());
+        ArrayAdapter<Icon> adapter = new MyAdapter(this, 0, im.getIcon());
         Log.d(LOG_TAG, " adapter: " + adapter);
+        Log.d(LOG_TAG, "im" + im.getIcon());
         spinner.setAdapter(adapter);
 
-*/
-        //Jag provar 2
-        /*
-        im = new IconModel(this);
-        Log.d(LOG_TAG, " icon: " + im.getIcon());
-        Log.d(LOG_TAG, " iconlist: " + iconList);
-        spinner =(Spinner)findViewById(R.id.iconAdder);
-
-        ArrayList<Icon> SOJY = new ArrayList<>();
-        SOJY.add(new Icon("Tjohej"));
-        SOJY.add(new Icon("Tjoho"));
-
-        MyAdapter adapt = new MyAdapter(this,SOJY);
-        spinner.setAdapter(adapt);
+        Log.d(LOG_TAG, " spinner: " + spinner);
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
-
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(getApplicationContext(), "Kajkaj", Toast.LENGTH_SHORT).show();
-                //Log.d(LOG_TAG, " iconImage: " + iconImage[i]);
-                //nameIcon = iconImage[i];
+                Toast.makeText(getApplicationContext(), "Ikon vald", Toast.LENGTH_SHORT).show();
+                spinn = i;
+                Log.d(LOG_TAG, " spinn i: " + spinn);
+
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
-        });*/
+        });
 
-        //Jag provar 3
-        ArrayList<Icon> myIcons = new ArrayList<>();
-        myIcons.add(new Icon("icon_activity"));
-        myIcons.add(new Icon("icon_boy"));
 
-        ArrayAdapter<Icon> adapter = new MyAdapter(this, 0, myIcons);
-
-        Spinner spinner = (Spinner)findViewById(R.id.iconAdder);
-        spinner.setAdapter(adapter);
     } //end of initiateSpinner
 
     //The button that adds a new destination
     public void buttonClick(View view) {
         Log.d(LOG_TAG, " button clicked");
-
         EditText nameField  = (EditText) findViewById(R.id.TextFieldIconName);
         EditText adressField = (EditText) findViewById(R.id.TextFieldAdress);
         EditText cityField = (EditText) findViewById(R.id.TextFieldCity);
         EditText postalField = (EditText) findViewById(R.id.TextFieldPostal);
+        //ImageView spinnerImage = (ImageView) findViewById(iconImage);
 
         String iconName = nameField.getText().toString();
         String adress = adressField.getText().toString();
         String city = cityField.getText().toString();
         String postalCode = postalField.getText().toString();
-        long iconId = 1;
+        int iconId = spinn;
 
 
-       Destination d = new Destination(iconName, adress, city, postalCode, iconId);
+        Destination d = new Destination(iconName, adress, city, postalCode, iconId);
         Log.d(LOG_TAG, "value of d: " + (d));
 
         Log.d(LOG_TAG, "value of dm: " + (dm));

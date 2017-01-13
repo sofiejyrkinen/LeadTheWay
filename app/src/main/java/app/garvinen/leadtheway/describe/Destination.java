@@ -11,9 +11,10 @@ public class Destination {
     private String adress;
     private String city;
     private String postalCode;
-    private long iconId;
+    private int iconId;
 
-    public Destination(String iconName, String adress, String city, String postalCode, long iconId) {
+
+    public Destination(String iconName, String adress, String city, String postalCode, int iconId) {
 
         this.iconName = iconName;
         this.adress = adress;
@@ -24,14 +25,24 @@ public class Destination {
 
     @Override
     public String toString() {
-        return iconName  + " | " + adress + ", " + city + ", " + postalCode;}
-
+        return iconName  + " | " + adress + " | " + city + " | " + postalCode;}
 
         public String iconName() {return iconName;}
         public String adress() {return adress;}
         public String city() {return city;}
         public String postalCode() {return postalCode;}
-        public long iconId() {return iconId;}
+        public int iconId() {return iconId;}
 
+        public String getIconName() {return iconName;}
+        public String getAdress() {return adress;}
+        public String getCity() {
+        return city;
+    }
+        public String getPostalCode(){
+        return postalCode;
+    }
+        public int getIconId(){
+            return iconId;
+        }
 
 } //end of Destination

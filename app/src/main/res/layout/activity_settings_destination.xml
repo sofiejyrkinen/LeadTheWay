@@ -41,21 +41,21 @@
         android:layout_height="32dp"
         android:textColor="#FFFFFF"
         android:background="@drawable/next_button"/>
-    
+
+    <ImageView
+        android:id="@+id/iconListImage"
+        android:layout_gravity="left"
+        android:layout_marginTop="20sp"
+        android:layout_width="50sp"
+        android:layout_height="50sp"
+        />
 
     <ListView
         android:id="@+id/destination_list"
         android:layout_width="match_parent"
         android:layout_marginTop="20sp"
-        android:layout_height="100sp"
+        android:layout_height="200sp"
        />
-
-    <ListView
-        android:id="@+id/iconList"
-        android:layout_width="match_parent"
-        android:layout_marginTop="20sp"
-        android:layout_height="100sp"
-        />
 
     <Button
         android:id="@+id/buttonNext"

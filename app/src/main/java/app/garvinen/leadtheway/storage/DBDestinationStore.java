@@ -66,7 +66,7 @@ public class DBDestinationStore implements DestinationStore {
         String adress = cursor.getString(2);
         String city = cursor.getString(3);
         String postalCode = cursor.getString(4);
-        long iconId = cursor.getLong(5);
+        int iconId = cursor.getInt(5);
         return new Destination(iconName, adress, city, postalCode, iconId);
     }
 

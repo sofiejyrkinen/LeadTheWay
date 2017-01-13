@@ -58,7 +58,7 @@ public class DBIconStore implements IconStore{
 
     private Icon cursorToIcon(Cursor cursor) {
         long iconId = cursor.getLong(0);
-        String iconPath = cursor.getString(1);
+        int iconPath = cursor.getInt(1);
         return new Icon(iconPath);
     }
 
@@ -75,7 +75,6 @@ public class DBIconStore implements IconStore{
     @Override
     public List<Icon> getIcon() {
         List<Icon> icon = new ArrayList<>();
-        //icon.add(R.drawable.icon_boy);
 
         Cursor cursor = database.query(MySQLiteHelper.TABLE_ICONS,
                 allColumns, null, null, null, null, null);
@@ -89,8 +88,8 @@ public class DBIconStore implements IconStore{
         // make sure to close the cursor
         cursor.close();
         return icon;
-    }
 
+    }
 
     public void addIcon(Icon i) {
         createIcon(i);
