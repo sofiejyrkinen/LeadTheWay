@@ -15,7 +15,7 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import app.garvinen.leadtheway.describe.Destination;
 import app.garvinen.leadtheway.describe.Icon;
@@ -42,7 +42,7 @@ public class DestinationAdder extends Activity {
     private Cursor cursor;
     private Spinner spinner;
     public static int spinn;
-    public ArrayList<Icon> myIcons = new ArrayList<>();
+    public List<Icon> myIcons ;
 
 
     @Override
@@ -53,6 +53,8 @@ public class DestinationAdder extends Activity {
         initiateButtons();
         initiateSpinner();
         dm = new DestinationModel(this);
+
+
 
     }//end of onCreate
 
@@ -78,7 +80,9 @@ public class DestinationAdder extends Activity {
         Log.d(LOG_TAG, " list: " + spinner);
         Log.d(LOG_TAG, " im: " + im.getIcon());
 
-        ArrayAdapter<Icon> adapter = new MyAdapter(this, 0, im.getIcon());
+        myIcons = im.getIcon();
+
+        ArrayAdapter<Icon> adapter = new MyAdapter(this, 0, myIcons);
         Log.d(LOG_TAG, " adapter: " + adapter);
         Log.d(LOG_TAG, "im" + im.getIcon());
         spinner.setAdapter(adapter);
@@ -91,6 +95,10 @@ public class DestinationAdder extends Activity {
                 Toast.makeText(getApplicationContext(), "Ikon vald", Toast.LENGTH_SHORT).show();
                 spinn = i;
                 Log.d(LOG_TAG, " spinn i: " + spinn);
+                if (myIcons!=null && myIcons.size()>0)
+                    Log.d(LOG_TAG, " spinn i: " + myIcons.get(i));
+                else
+                    Log.d(LOG_TAG, " spinn  ås å e NULL");
 
             }
 
@@ -116,7 +124,8 @@ public class DestinationAdder extends Activity {
         String adress = adressField.getText().toString();
         String city = cityField.getText().toString();
         String postalCode = postalField.getText().toString();
-        int iconId = spinn;
+        int iconId = myIcons.get(spinn).iconPath();
+        Log.d(LOG_TAG, "value of id: " + iconId);
 
 
         Destination d = new Destination(iconName, adress, city, postalCode, iconId);

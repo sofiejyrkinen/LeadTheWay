@@ -60,8 +60,8 @@ class CustomListAdapter extends ArrayAdapter <Destination>{
         //int imageID = c.getResources().getIdentifier(String.valueOf(dest.getIconId()), "drawable", c.getPackageName());
         //Log.d(LOG_TAG, " imageID: " + imageID);
 
-        //int imageID = dest.getIconId();
-        //image.setImageResource(imageID);
+        int imageID = dest.getIconId();
+        image.setImageResource(imageID);
 
         return view;
     }
