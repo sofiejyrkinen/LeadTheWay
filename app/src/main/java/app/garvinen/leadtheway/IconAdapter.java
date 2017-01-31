@@ -18,12 +18,12 @@ import static app.garvinen.leadtheway.R.id.iconImage;
  * Created by sofiejyrkinen on 2016-12-12.
  */
 
-public class MyAdapter extends ArrayAdapter <Icon> {
+public class IconAdapter extends ArrayAdapter <Icon> {
     private Context c;
     private List<Icon> icons;
-    public static String LOG_TAG = MyAdapter.class.getName();
+    public static String LOG_TAG = IconAdapter.class.getName();
 
-    public MyAdapter(Context c, int resource, List<Icon> icons){
+    public IconAdapter(Context c, int resource, List<Icon> icons){
         super(c, resource, icons);
         this.c = c;
         this.icons = icons;

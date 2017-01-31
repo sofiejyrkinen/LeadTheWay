@@ -19,15 +19,15 @@ import app.garvinen.leadtheway.describe.Destination;
  * Created by sofiejyrkinen on 2017-01-03.
  */
 
-class CustomListAdapter extends ArrayAdapter <Destination>{
+class DestinationAdapter extends ArrayAdapter <Destination>{
 
     private Context c;
     private List<Destination> dests;
-    public static String LOG_TAG = CustomListAdapter.class.getName();
+    public static String LOG_TAG = DestinationAdapter.class.getName();
 
 
     //constructor, call on creation
-    public CustomListAdapter(Context c, int resource, List<Destination> objects) {
+    public DestinationAdapter(Context c, int resource, List<Destination> objects) {
         super (c, resource, objects);
         this.c = c;
         this.dests = objects;
@@ -44,13 +44,15 @@ class CustomListAdapter extends ArrayAdapter <Destination>{
         LayoutInflater inflater = (LayoutInflater) c.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.list_row, null);
 
-        TextView address = (TextView) view.findViewById(R.id.wholeAdress);
         TextView nameIcon = (TextView) view.findViewById(R.id.nameIcon);
+        TextView address = (TextView) view.findViewById(R.id.wholeAdress);
         ImageView image = (ImageView) view.findViewById(R.id.imageIcon);
 
-        //set address and description
+        //set the icon Name
         String iconText = dest.getIconName();
         nameIcon.setText(iconText);
+
+        //set address and description
         String completeAddress = dest.getAdress() + ", " +dest.getCity() + ", " + dest.getPostalCode();
         address.setText(completeAddress);
 
@@ -60,8 +62,12 @@ class CustomListAdapter extends ArrayAdapter <Destination>{
         //int imageID = c.getResources().getIdentifier(String.valueOf(dest.getIconId()), "drawable", c.getPackageName());
         //Log.d(LOG_TAG, " imageID: " + imageID);
 
+        //set the image
         int imageID = dest.getIconId();
         image.setImageResource(imageID);
+
+        Log.d(LOG_TAG, " imageId: " + imageID);
+        Log.d(LOG_TAG, " image: " + image);
 
         return view;
     }

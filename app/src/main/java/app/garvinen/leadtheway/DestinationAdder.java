@@ -54,8 +54,6 @@ public class DestinationAdder extends Activity {
         initiateSpinner();
         dm = new DestinationModel(this);
 
-
-
     }//end of onCreate
 
 
@@ -71,18 +69,16 @@ public class DestinationAdder extends Activity {
     }//end of initiateButtons
 
     public void initiateSpinner(){
-
         im = new IconModel(this);
-
         final Spinner spinner = (Spinner)findViewById(R.id.iconAdder);
 
         Log.d(LOG_TAG, " im: " + im.getIcon());
-        Log.d(LOG_TAG, " list: " + spinner);
-        Log.d(LOG_TAG, " im: " + im.getIcon());
+        Log.d(LOG_TAG, " spinner " + spinner);
 
         myIcons = im.getIcon();
+        Log.d(LOG_TAG, " myIcons: " + myIcons);
 
-        ArrayAdapter<Icon> adapter = new MyAdapter(this, 0, myIcons);
+        ArrayAdapter<Icon> adapter = new IconAdapter(this, 0, myIcons);
         Log.d(LOG_TAG, " adapter: " + adapter);
         Log.d(LOG_TAG, "im" + im.getIcon());
         spinner.setAdapter(adapter);
@@ -133,6 +129,8 @@ public class DestinationAdder extends Activity {
 
         Log.d(LOG_TAG, "value of dm: " + (dm));
         dm.addDestination(d);
+        Log.d(LOG_TAG, "value of dm add: " + (dm));
+
 
         Intent intent = new Intent(DestinationAdder.this, SettingsDestinationActivity.class);
         startActivity(intent);

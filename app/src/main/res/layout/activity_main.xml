@@ -32,6 +32,7 @@
         android:id="@+id/LabelGoFrom" />
 
     <ListView
+        android:id="@+id/iconsList1"
         android:layout_width="match_parent"
         android:layout_height="100sp" />
 
@@ -56,6 +57,7 @@
 
 
     <ListView
+        android:id="@+id/iconsList2"
         android:layout_width="match_parent"
         android:layout_height="100sp" />
 

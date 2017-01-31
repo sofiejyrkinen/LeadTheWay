@@ -7,11 +7,23 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import java.util.List;
+
+import app.garvinen.leadtheway.describe.Destination;
+import app.garvinen.leadtheway.model.DestinationModel;
 
 public class MainActivity extends AppCompatActivity {
 
     private static String LOG_TAG = MainActivity.class.getName();
+    private DestinationModel dm;
+    public List<Destination> myIcons;
+    public static int SOJY;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +32,37 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Log.d(LOG_TAG, "Setting Layout Done");
         initiateButtons();
+        setAdapter();
     }
+
+    private void setAdapter() {
+
+        dm = new DestinationModel(this);
+        Log.d(LOG_TAG, " value of dm: " + dm);
+
+        myIcons = dm.getDestination();
+        Log.d(LOG_TAG, " myIcons+dm: " + dm.getDestination());
+
+
+        ListView destinationIcons = (ListView) findViewById(R.id.iconsList1);
+        Log.d(LOG_TAG, " destinationIcons: " + destinationIcons);
+        Log.d(LOG_TAG, " dest: " + dm.getDestination());
+
+        ArrayAdapter<Destination> adapt = new IconShAdapter(this, 0, myIcons);
+        Log.d(LOG_TAG, " adapter: " + adapt);
+
+        destinationIcons.setAdapter(adapt);
+
+        destinationIcons.setOnItemClickListener(
+                new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View viewClicked, int postion, long id) {
+                        Toast.makeText(getApplicationContext(), "Ikon vald", Toast.LENGTH_SHORT).show();
+
+                    }
+                }); //end of onItemClickListner
+
+    } //end of set adapter
 
     public void onStart(){
         super.onStart();
