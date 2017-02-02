@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import app.garvinen.leadtheway.adapters.IconAdapter;
 import app.garvinen.leadtheway.describe.Destination;
 import app.garvinen.leadtheway.describe.Icon;
 import app.garvinen.leadtheway.model.DestinationModel;

@@ -1,4 +1,4 @@
-package app.garvinen.leadtheway;
+package app.garvinen.leadtheway.adapters;
 
 import android.app.Activity;
 import android.content.Context;
@@ -10,6 +10,7 @@ import android.widget.ImageView;
 
 import java.util.List;
 
+import app.garvinen.leadtheway.R;
 import app.garvinen.leadtheway.describe.Icon;
 
 import static app.garvinen.leadtheway.R.id.iconImage;

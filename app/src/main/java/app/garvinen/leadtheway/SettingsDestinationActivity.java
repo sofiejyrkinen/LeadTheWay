@@ -13,6 +13,7 @@ import android.widget.ListView;
 
 import java.util.List;
 
+import app.garvinen.leadtheway.adapters.DestinationAdapter;
 import app.garvinen.leadtheway.describe.Destination;
 import app.garvinen.leadtheway.model.DestinationModel;
 import app.garvinen.leadtheway.storage.VTSync;

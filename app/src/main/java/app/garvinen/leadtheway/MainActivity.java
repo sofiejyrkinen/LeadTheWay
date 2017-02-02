@@ -3,18 +3,17 @@ package app.garvinen.leadtheway;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.List;
 
+import app.garvinen.leadtheway.adapters.IconSearchAdapter;
 import app.garvinen.leadtheway.describe.Destination;
 import app.garvinen.leadtheway.model.DestinationModel;
 
@@ -32,18 +31,44 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Log.d(LOG_TAG, "Setting Layout Done");
         initiateButtons();
-        setAdapter();
+        setIconAdapter();
     }
 
-    private void setAdapter() {
+    private void setIconAdapter() {
 
         dm = new DestinationModel(this);
         Log.d(LOG_TAG, " value of dm: " + dm);
 
+        // Initialize destination icons
         myIcons = dm.getDestination();
         Log.d(LOG_TAG, " myIcons+dm: " + dm.getDestination());
 
+        //Provar RecycleView
 
+        RecyclerView rvIcons = (RecyclerView) findViewById(R.id.iconsList1);
+
+
+        // Create adapter passing in the sample user data
+        IconSearchAdapter adapter = new IconSearchAdapter(this, myIcons);
+
+        // Attach the adapter to the recyclerview to populate items
+        rvIcons.setAdapter(adapter);
+
+        // Set layout manager to position the items
+        rvIcons.setLayoutManager(new LinearLayoutManager(this));
+        // That's all!
+
+        // Setup layout manager for items with orientation
+// Also supports `LinearLayoutManager.HORIZONTAL`
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+// Optionally customize the position you want to default scroll to
+        layoutManager.scrollToPosition(0);
+// Attach layout manager to the RecyclerView
+        rvIcons.setLayoutManager(layoutManager);
+
+        //Detta nedan fungerar typ
+
+        /*
         ListView destinationIcons = (ListView) findViewById(R.id.iconsList1);
         Log.d(LOG_TAG, " destinationIcons: " + destinationIcons);
         Log.d(LOG_TAG, " dest: " + dm.getDestination());
@@ -56,12 +81,24 @@ public class MainActivity extends AppCompatActivity {
         destinationIcons.setOnItemClickListener(
                 new AdapterView.OnItemClickListener() {
                     @Override
-                    public void onItemClick(AdapterView<?> parent, View viewClicked, int postion, long id) {
+                    public void onItemClick(AdapterView<?> parent, View viewClicked, int position, long id) {
                         Toast.makeText(getApplicationContext(), "Ikon vald", Toast.LENGTH_SHORT).show();
 
-                    }
-                }); //end of onItemClickListner
+                        /*This doesn't yet work as I want..
+                        ListView destAdress = (ListView) findViewById(R.id.addresList1);
+                        Log.d(LOG_TAG, " destinationIcons: " + destAdress);
+                        Log.d(LOG_TAG, " dest: " + dm.getDestination());
 
+                        ArrayAdapter<Destination> addressAdapt = new AddressAdapter(this, 0, myIcons);
+                        Log.d(LOG_TAG, " adapter: " + addressAdapt);
+
+                        destAdress.setAdapter(addressAdapt);
+
+
+                    }
+                }); //end of onItemClickListener
+
+*/
     } //end of set adapter
 
     public void onStart(){

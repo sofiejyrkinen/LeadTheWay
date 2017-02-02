@@ -1,4 +1,4 @@
-package app.garvinen.leadtheway;
+package app.garvinen.leadtheway.adapters;
 
 import android.app.Activity;
 import android.content.Context;
@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import app.garvinen.leadtheway.R;
 import app.garvinen.leadtheway.describe.Destination;
 
 
@@ -19,7 +20,7 @@ import app.garvinen.leadtheway.describe.Destination;
  * Created by sofiejyrkinen on 2017-01-03.
  */
 
-class DestinationAdapter extends ArrayAdapter <Destination>{
+public class DestinationAdapter extends ArrayAdapter <Destination>{
 
     private Context c;
     private List<Destination> dests;

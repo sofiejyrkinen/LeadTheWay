@@ -28,49 +28,62 @@
         android:layout_height="wrap_content"
         android:textSize="15sp"
         android:textColor="#2b2a2a"
-        android:layout_marginTop="20sp"
+        android:layout_marginTop="10sp"
+        android:layout_marginBottom="20dp"
         android:id="@+id/LabelGoFrom" />
 
-    <ListView
-        android:id="@+id/iconsList1"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="100sp" />
+        android:layout_height="wrap_content">
 
-    <EditText
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/iconsList1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"/>
+
+
+    </RelativeLayout>
+
+
+
+    <ListView
+        android:id="@+id/addresList1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:layout_marginTop="10sp"
-        android:textSize="20sp"
-        android:background="@drawable/custom_edit_text_field"
-        android:id="@+id/TextFieldGoFrom"
-        android:inputType="text" />
+        android:layout_height="30dp"
+        android:background="#FFFFFF" />
 
     <TextView
         android:text="Jag vill åka till:"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30sp"
+        android:layout_marginBottom="10dp"
         android:textSize="15sp"
         android:textColor="#2b2a2a"
         android:id="@+id/LabelGoToo" />
 
 
-    <ListView
-        android:id="@+id/iconsList2"
-        android:layout_width="match_parent"
-        android:layout_height="100sp" />
-
-
-    <EditText
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="text"
-        android:textSize="20sp"
-        android:layout_marginTop="10sp"
-        android:background="@drawable/custom_edit_text_field"
-        android:ems="10"
-        android:id="@+id/TextFieldGoToo"
+        android:orientation="horizontal">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/iconsList2"
+            android:layout_width="wrap_content"
+            android:layout_height="100sp"
+            android:layout_marginBottom="10dp"/>
+
+
+    </LinearLayout>
+
+
+    <ListView
+        android:id="@+id/addresList2"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="#FFFFFF" />
         />
 
     <Button

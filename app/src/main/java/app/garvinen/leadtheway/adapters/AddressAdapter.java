@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import app.garvinen.leadtheway.IconShAdapter;
 import app.garvinen.leadtheway.R;
 import app.garvinen.leadtheway.describe.Destination;
 
@@ -19,15 +18,15 @@ import app.garvinen.leadtheway.describe.Destination;
  * Created by sofiejyrkinen on 2017-01-31.
  */
 
-public class AdressAdapter extends ArrayAdapter<Destination> {
+public class AddressAdapter extends ArrayAdapter<Destination> {
 
     private Context c;
     private List<Destination> destList;
-    public static String LOG_TAG = IconShAdapter.class.getName();
+    public static String LOG_TAG = AddressAdapter.class.getName();
 
 
     //constructor, call on creation
-    public AdressAdapter(Context c, int resource, List<Destination> objects) {
+    public AddressAdapter(Context c, int resource, List<Destination> objects) {
         super (c, resource, objects);
         this.c = c;
         this.destList = objects;
@@ -53,7 +52,7 @@ public class AdressAdapter extends ArrayAdapter<Destination> {
 
         Log.d(LOG_TAG, " getIconID: " + dest.getAdress());
 
-        
+
         return view;
     }
 }
