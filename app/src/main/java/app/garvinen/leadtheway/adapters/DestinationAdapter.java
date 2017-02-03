@@ -52,18 +52,19 @@ public class DestinationAdapter extends ArrayAdapter <Destination>{
         //set the icon Name
         String iconText = dest.getIconName();
         nameIcon.setText(iconText);
+        Log.d(LOG_TAG, "Icon Name" + dest.getIconName());
 
         //set address and description
         String completeAddress = dest.getAdress() + ", " +dest.getCity() + ", " + dest.getPostalCode();
         address.setText(completeAddress);
 
+        Log.d(LOG_TAG, "Destination Address" + dest.getAdress());
+        Log.d(LOG_TAG, "Destination City" + dest.getCity());
+        Log.d(LOG_TAG, "Destination PostalCode" + dest.postalCode());
+
         Log.d(LOG_TAG, " getIconID: " + dest.getIconId());
 
-        //get the image associated with this property
-        //int imageID = c.getResources().getIdentifier(String.valueOf(dest.getIconId()), "drawable", c.getPackageName());
-        //Log.d(LOG_TAG, " imageID: " + imageID);
-
-        //set the image
+        //get the image associated with this property and set the image
         int imageID = dest.getIconId();
         image.setImageResource(imageID);
 

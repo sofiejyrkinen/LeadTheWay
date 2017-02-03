@@ -20,10 +20,9 @@ import app.garvinen.leadtheway.describe.Destination;
 
 public class AddressAdapter extends ArrayAdapter<Destination> {
 
+    public static String LOG_TAG = AddressAdapter.class.getName();
     private Context c;
     private List<Destination> destList;
-    public static String LOG_TAG = AddressAdapter.class.getName();
-
 
     //constructor, call on creation
     public AddressAdapter(Context c, int resource, List<Destination> objects) {
@@ -35,9 +34,12 @@ public class AddressAdapter extends ArrayAdapter<Destination> {
 
     //called when rendering the list
     public View getView(int position, View convertView, ViewGroup parent) {
-
         //get the property we are displaying
+        Log.d(LOG_TAG, " postion: " + position);
         Destination dest = destList.get(position);
+        Log.d(LOG_TAG, " destList.position : " + destList.get(position));
+        Log.d(LOG_TAG, " dest: " + dest);
+
 
         //get the inflater and inflate the XML layout for each item
         LayoutInflater inflater = (LayoutInflater) c.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
@@ -50,7 +52,7 @@ public class AddressAdapter extends ArrayAdapter<Destination> {
         String setAddress = dest.getAdress();
         address.setText(setAddress);
 
-        Log.d(LOG_TAG, " getIconID: " + dest.getAdress());
+        Log.d(LOG_TAG, " getAdress: " + dest.getAdress());
 
 
         return view;

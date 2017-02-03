@@ -44,6 +44,9 @@ public class DestinationAdder extends Activity {
     private Spinner spinner;
     public static int spinn;
     public List<Icon> myIcons ;
+    private EditText nameField, adressField, cityField, postalField;
+    private String iconName, adress, city, postalCode;
+    private int iconId;
 
 
     @Override
@@ -55,17 +58,31 @@ public class DestinationAdder extends Activity {
         initiateSpinner();
         dm = new DestinationModel(this);
 
+
+
     }//end of onCreate
 
 
     public void initiateButtons() {
+
         Button buttonClose = (Button) findViewById(R.id.buttonClose);
         buttonClose.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(DestinationAdder.this, SettingsDestinationActivity.class);
                 startActivity(intent);
+
             }
-        });
+        }); //end of buttonClose.setOnClick
+
+        Button buttonReg = (Button) findViewById(R.id.buttonSaveDest);
+        buttonReg.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                registerDestination(); //call when the button is clicked to validate registration
+
+            }
+
+        }); //end of buttonReg.setOnClick
+
 
     }//end of initiateButtons
 
@@ -108,7 +125,83 @@ public class DestinationAdder extends Activity {
 
     } //end of initiateSpinner
 
+
+    public void registerDestination(){
+        Log.d(LOG_TAG, " button clicked");
+        addDestinationValues();
+
+        if(!validate()){
+            Toast.makeText(getApplicationContext(), "Du måste skriva in en destination", Toast.LENGTH_SHORT).show();
+        }
+            else{
+            registrationSuccess();
+        }
+    }
+
+    /*
+    * Method calls when a destination was added and then the activity SettingsDestination starts
+     */
+    public void registrationSuccess(){
+        Toast.makeText(getApplicationContext(), "Din destination sparades", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(DestinationAdder.this, SettingsDestinationActivity.class);
+        startActivity(intent);
+    }
+
+    /*
+    * A method to validate the input by the user
+     */
+    public boolean validate(){
+        boolean isValid = true;
+
+        if(iconName.isEmpty()|| (iconName.length()>30)){
+            nameField.setError("Skriv ett ikonnamn");
+            isValid = false;
+        }
+        if(adress.isEmpty()|| (adress.length()>60)){
+            adressField.setError("Skriv en korrekt adress");
+            isValid = false;
+        }
+        if(city.isEmpty()|| (city.length()>60)){
+            cityField.setError("Skriv en korrekt stad");
+            isValid = false;
+        }
+
+        if(postalCode.isEmpty()|| (postalCode.length()>5)){
+            postalField.setError("Postkoder kan inte vara längre än fem siffror");
+            isValid = false;
+        }
+
+        return isValid;
+    } //end of validate
+
+    /*
+    * A method that add a new destination
+     */
+    public void addDestinationValues(){
+        nameField  = (EditText) findViewById(R.id.TextFieldIconName);
+        adressField = (EditText) findViewById(R.id.TextFieldAdress);
+        cityField = (EditText) findViewById(R.id.TextFieldCity);
+        postalField = (EditText) findViewById(R.id.TextFieldPostal);
+
+        iconName = nameField.getText().toString();
+        adress = adressField.getText().toString();
+        city = cityField.getText().toString();
+        postalCode = postalField.getText().toString();
+        iconId = myIcons.get(spinn).iconPath();
+        Log.d(LOG_TAG, "value of id: " + iconId);
+
+
+        Destination d = new Destination(iconName, adress, city, postalCode, iconId);
+        Log.d(LOG_TAG, "value of d: " + (d));
+
+        Log.d(LOG_TAG, "value of dm: " + (dm));
+        dm.addDestination(d);
+        Log.d(LOG_TAG, "value of dm add: " + (dm));
+    }
+
     //The button that adds a new destination
+
+    /*
     public void buttonClick(View view) {
         Log.d(LOG_TAG, " button clicked");
         EditText nameField  = (EditText) findViewById(R.id.TextFieldIconName);
@@ -136,6 +229,6 @@ public class DestinationAdder extends Activity {
         Intent intent = new Intent(DestinationAdder.this, SettingsDestinationActivity.class);
         startActivity(intent);
     }
-
+*/
 
 }//end of DestinationAdder

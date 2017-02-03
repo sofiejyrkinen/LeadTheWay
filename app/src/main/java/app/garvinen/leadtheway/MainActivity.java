@@ -9,19 +9,25 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.List;
 
+import app.garvinen.leadtheway.adapters.AddressAdapter;
 import app.garvinen.leadtheway.adapters.IconSearchAdapter;
 import app.garvinen.leadtheway.describe.Destination;
 import app.garvinen.leadtheway.model.DestinationModel;
+import app.garvinen.leadtheway.model.ItemClickSupport;
 
 public class MainActivity extends AppCompatActivity {
 
     private static String LOG_TAG = MainActivity.class.getName();
     private DestinationModel dm;
     public List<Destination> myIcons;
+    public RecyclerView destinationIcons;
     public static int SOJY;
 
     @Override
@@ -34,76 +40,66 @@ public class MainActivity extends AppCompatActivity {
         setIconAdapter();
     }
 
-    private void setIconAdapter() {
-
-        dm = new DestinationModel(this);
-        Log.d(LOG_TAG, " value of dm: " + dm);
-
-        // Initialize destination icons
-        myIcons = dm.getDestination();
-        Log.d(LOG_TAG, " myIcons+dm: " + dm.getDestination());
-
-        //Provar RecycleView
-
-        RecyclerView rvIcons = (RecyclerView) findViewById(R.id.iconsList1);
-
-
-        // Create adapter passing in the sample user data
-        IconSearchAdapter adapter = new IconSearchAdapter(this, myIcons);
-
-        // Attach the adapter to the recyclerview to populate items
-        rvIcons.setAdapter(adapter);
-
-        // Set layout manager to position the items
-        rvIcons.setLayoutManager(new LinearLayoutManager(this));
-        // That's all!
-
-        // Setup layout manager for items with orientation
-// Also supports `LinearLayoutManager.HORIZONTAL`
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-// Optionally customize the position you want to default scroll to
-        layoutManager.scrollToPosition(0);
-// Attach layout manager to the RecyclerView
-        rvIcons.setLayoutManager(layoutManager);
-
-        //Detta nedan fungerar typ
-
-        /*
-        ListView destinationIcons = (ListView) findViewById(R.id.iconsList1);
-        Log.d(LOG_TAG, " destinationIcons: " + destinationIcons);
-        Log.d(LOG_TAG, " dest: " + dm.getDestination());
-
-        ArrayAdapter<Destination> adapt = new IconShAdapter(this, 0, myIcons);
-        Log.d(LOG_TAG, " adapter: " + adapt);
-
-        destinationIcons.setAdapter(adapt);
-
-        destinationIcons.setOnItemClickListener(
-                new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View viewClicked, int position, long id) {
-                        Toast.makeText(getApplicationContext(), "Ikon vald", Toast.LENGTH_SHORT).show();
-
-                        /*This doesn't yet work as I want..
-                        ListView destAdress = (ListView) findViewById(R.id.addresList1);
-                        Log.d(LOG_TAG, " destinationIcons: " + destAdress);
-                        Log.d(LOG_TAG, " dest: " + dm.getDestination());
-
-                        ArrayAdapter<Destination> addressAdapt = new AddressAdapter(this, 0, myIcons);
-                        Log.d(LOG_TAG, " adapter: " + addressAdapt);
-
-                        destAdress.setAdapter(addressAdapt);
-
-
-                    }
-                }); //end of onItemClickListener
-
-*/
-    } //end of set adapter
 
     public void onStart(){
         super.onStart();
         Log.d(LOG_TAG, "onStart: ");
+    }
+
+    private void setIconAdapter() {
+
+        // Initialize destination icons
+        dm = new DestinationModel(this);
+        Log.d(LOG_TAG, " value of dm: " + dm);
+
+        myIcons = dm.getDestination();
+        Log.d(LOG_TAG, " myIcons: " + myIcons);
+
+        destinationIcons = (RecyclerView) findViewById(R.id.iconsList1);            //Initialize the RecyclerView
+        IconSearchAdapter adapter = new IconSearchAdapter(this, myIcons);           // Create adapter passing in the sample user data
+        destinationIcons.setAdapter(adapter);                                        // Attach the adapter to the recyclerview to populate items
+        destinationIcons.setLayoutManager(new LinearLayoutManager(this));            // Set layout manager to position the items
+
+        /*
+         * Setup layout manager for items with orientation horizontal
+         */
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        layoutManager.scrollToPosition(0);
+        destinationIcons.setLayoutManager(layoutManager); // Attach layout manager to the RecyclerView
+        iconClick();
+
+
+    } //end of set adapter
+
+    public void iconClick(){
+        /*
+        * Source: http://www.littlerobots.nl/blog/Handle-Android-RecyclerView-Clicks/
+        */
+        ItemClickSupport.addTo(destinationIcons).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
+            @Override
+            public void onItemClicked(RecyclerView recyclerView, int position, View v) {
+                Toast.makeText(getApplicationContext(), "Ikon vald", Toast.LENGTH_SHORT).show();
+                Log.d(LOG_TAG, "position" + position);
+                setAddress(position);
+            }
+        }); //end of ItemClickSupport
+
+    }
+
+    public void setAddress(int position){
+
+        myIcons.get(position);
+        Log.d(LOG_TAG, "myIcons position " + myIcons.get(position));
+
+        String SOJY = myIcons.get(position).getAdress();
+        Log.d(LOG_TAG, "Adressen " + myIcons.get(position));
+
+        ListView destAdress = (ListView) findViewById(R.id.addresList1);
+        Log.d(LOG_TAG, " destinationIcons: " + destAdress);
+        Log.d(LOG_TAG, " dest: " + dm.getDestination());
+        ArrayAdapter<Destination> addressAdapt = new AddressAdapter(this, 0, myIcons);
+        Log.d(LOG_TAG, " adapter: " + addressAdapt);
+        destAdress.setAdapter(addressAdapt);
     }
 
     @Override
