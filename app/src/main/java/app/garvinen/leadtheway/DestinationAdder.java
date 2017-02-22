@@ -128,7 +128,7 @@ public class DestinationAdder extends Activity {
 
     public void registerDestination(){
         Log.d(LOG_TAG, " button clicked");
-        addDestinationValues();
+        getDestinationValues();
 
         if(!validate()){
             Toast.makeText(getApplicationContext(), "Du måste skriva in en destination", Toast.LENGTH_SHORT).show();
@@ -142,6 +142,7 @@ public class DestinationAdder extends Activity {
     * Method calls when a destination was added and then the activity SettingsDestination starts
      */
     public void registrationSuccess(){
+        addDestinationValues(d);
         Toast.makeText(getApplicationContext(), "Din destination sparades", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(DestinationAdder.this, SettingsDestinationActivity.class);
         startActivity(intent);
@@ -177,7 +178,7 @@ public class DestinationAdder extends Activity {
     /*
     * A method that add a new destination
      */
-    public void addDestinationValues(){
+    public void getDestinationValues(){
         nameField  = (EditText) findViewById(R.id.TextFieldIconName);
         adressField = (EditText) findViewById(R.id.TextFieldAdress);
         cityField = (EditText) findViewById(R.id.TextFieldCity);
@@ -194,41 +195,15 @@ public class DestinationAdder extends Activity {
         Destination d = new Destination(iconName, adress, city, postalCode, iconId);
         Log.d(LOG_TAG, "value of d: " + (d));
 
+    }
+
+    public void addDestinationValues(Destination destination){
         Log.d(LOG_TAG, "value of dm: " + (dm));
         dm.addDestination(d);
         Log.d(LOG_TAG, "value of dm add: " + (dm));
     }
 
-    //The button that adds a new destination
-
-    /*
-    public void buttonClick(View view) {
-        Log.d(LOG_TAG, " button clicked");
-        EditText nameField  = (EditText) findViewById(R.id.TextFieldIconName);
-        EditText adressField = (EditText) findViewById(R.id.TextFieldAdress);
-        EditText cityField = (EditText) findViewById(R.id.TextFieldCity);
-        EditText postalField = (EditText) findViewById(R.id.TextFieldPostal);
-        //ImageView spinnerImage = (ImageView) findViewById(iconImage);
-
-        String iconName = nameField.getText().toString();
-        String adress = adressField.getText().toString();
-        String city = cityField.getText().toString();
-        String postalCode = postalField.getText().toString();
-        int iconId = myIcons.get(spinn).iconPath();
-        Log.d(LOG_TAG, "value of id: " + iconId);
 
 
-        Destination d = new Destination(iconName, adress, city, postalCode, iconId);
-        Log.d(LOG_TAG, "value of d: " + (d));
 
-        Log.d(LOG_TAG, "value of dm: " + (dm));
-        dm.addDestination(d);
-        Log.d(LOG_TAG, "value of dm add: " + (dm));
-
-
-        Intent intent = new Intent(DestinationAdder.this, SettingsDestinationActivity.class);
-        startActivity(intent);
-    }
-*/
-
-}//end of DestinationAdder
+}//end of class DestinationAdder

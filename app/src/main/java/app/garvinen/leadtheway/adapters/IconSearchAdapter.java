@@ -6,11 +6,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.List;
 
 import app.garvinen.leadtheway.R;
 import app.garvinen.leadtheway.describe.Destination;
+
+import static app.garvinen.leadtheway.R.id.nameIcon;
 
 /**
  * Created by sofiejyrkinen on 2017-02-02.
@@ -44,6 +47,7 @@ public class IconSearchAdapter extends
     // Your holder should contain a member variable
     // for any view that will be set as you render a row
     public ImageView iconImage;
+    public TextView iconName;
 
 
     // We also create a constructor that accepts the entire item row
@@ -54,6 +58,7 @@ public class IconSearchAdapter extends
         super(itemView);
 
         iconImage = (ImageView) itemView.findViewById(R.id.imageIcon);
+        iconName = (TextView) itemView.findViewById(nameIcon);
     }
 }
 
@@ -80,6 +85,10 @@ public class IconSearchAdapter extends
 
         // Set item views based on your views and data model
         ImageView imageIcon = viewHolder.iconImage;
+        TextView imageName = viewHolder.iconName;
+
+        String iconText = dest.getIconName();
+        imageName.setText(iconText);
 
         int imageID = dest.getIconId();
         imageIcon.setImageResource(imageID);
