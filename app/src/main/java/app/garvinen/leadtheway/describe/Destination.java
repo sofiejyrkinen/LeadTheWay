@@ -25,7 +25,7 @@ public class Destination {
 
     @Override
     public String toString() {
-        return iconName  + " | " + adress + " | " + city + " | " + postalCode;}
+        return iconName  + " | " + adress + " | " + city + " | " + postalCode + " | " + iconId;}
 
         public String iconName() {return iconName;}
         public String adress() {return adress;}

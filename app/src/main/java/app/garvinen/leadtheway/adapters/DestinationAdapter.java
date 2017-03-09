@@ -1,4 +1,4 @@
-package app.garvinen.leadtheway;
+package app.garvinen.leadtheway.adapters;
 
 import android.app.Activity;
 import android.content.Context;
@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import app.garvinen.leadtheway.R;
 import app.garvinen.leadtheway.describe.Destination;
 
 
@@ -19,15 +20,15 @@ import app.garvinen.leadtheway.describe.Destination;
  * Created by sofiejyrkinen on 2017-01-03.
  */
 
-class CustomListAdapter extends ArrayAdapter <Destination>{
+public class DestinationAdapter extends ArrayAdapter <Destination>{
 
     private Context c;
     private List<Destination> dests;
-    public static String LOG_TAG = CustomListAdapter.class.getName();
+    public static String LOG_TAG = DestinationAdapter.class.getName();
 
 
     //constructor, call on creation
-    public CustomListAdapter(Context c, int resource, List<Destination> objects) {
+    public DestinationAdapter(Context c, int resource, List<Destination> objects) {
         super (c, resource, objects);
         this.c = c;
         this.dests = objects;
@@ -44,24 +45,31 @@ class CustomListAdapter extends ArrayAdapter <Destination>{
         LayoutInflater inflater = (LayoutInflater) c.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.list_row, null);
 
-        TextView address = (TextView) view.findViewById(R.id.wholeAdress);
         TextView nameIcon = (TextView) view.findViewById(R.id.nameIcon);
+        TextView address = (TextView) view.findViewById(R.id.wholeAdress);
         ImageView image = (ImageView) view.findViewById(R.id.imageIcon);
 
-        //set address and description
+        //set the icon Name
         String iconText = dest.getIconName();
         nameIcon.setText(iconText);
+        Log.d(LOG_TAG, "Icon Name" + dest.getIconName());
+
+        //set address and description
         String completeAddress = dest.getAdress() + ", " +dest.getCity() + ", " + dest.getPostalCode();
         address.setText(completeAddress);
 
+        Log.d(LOG_TAG, "Destination Address" + dest.getAdress());
+        Log.d(LOG_TAG, "Destination City" + dest.getCity());
+        Log.d(LOG_TAG, "Destination PostalCode" + dest.postalCode());
+
         Log.d(LOG_TAG, " getIconID: " + dest.getIconId());
 
-        //get the image associated with this property
-        //int imageID = c.getResources().getIdentifier(String.valueOf(dest.getIconId()), "drawable", c.getPackageName());
-        //Log.d(LOG_TAG, " imageID: " + imageID);
+        //get the image associated with this property and set the image
+        int imageID = dest.getIconId();
+        image.setImageResource(imageID);
 
-        //int imageID = dest.getIconId();
-        //image.setImageResource(imageID);
+        Log.d(LOG_TAG, " imageId: " + imageID);
+        Log.d(LOG_TAG, " image: " + image);
 
         return view;
     }

@@ -11,23 +11,20 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
-import java.util.ArrayList;
+import java.util.List;
 
+import app.garvinen.leadtheway.adapters.DestinationAdapter;
 import app.garvinen.leadtheway.describe.Destination;
 import app.garvinen.leadtheway.model.DestinationModel;
-import app.garvinen.leadtheway.model.IconModel;
 import app.garvinen.leadtheway.storage.VTSync;
 
 public class SettingsDestinationActivity extends AppCompatActivity {
 
     private static String LOG_TAG = SettingsDestinationActivity.class.getName();
-    private ArrayAdapter<Destination> adapter;
     private ListView destinationList;
-    private ArrayAdapter<Integer> adapt;
     private DestinationModel dm;
-    private IconModel im;
     private VTSync vts;
-    private ArrayList<Integer> bildlista = new ArrayList<>();
+    public List<Destination> myDestinations;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,43 +33,32 @@ public class SettingsDestinationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_settings_destination);
         Log.d(LOG_TAG, "Setting Layout Done");
         initiateButtons();
+        setDestAdapter();
 
         vts = new VTSync(this);
         //dm.sync();
         vts.syncVT();
 
-        //Adapter for destinations
+
+    }//end of onCreate
+
+    //Adapter for destinations
+    public void setDestAdapter(){
         dm = new DestinationModel(this);
+
+        myDestinations = dm.getDestination();
+
 
         destinationList = (ListView) findViewById(R.id.destination_list);
         Log.d(LOG_TAG, " dest: " + dm.getDestination());
         Log.d(LOG_TAG, " list: " + destinationList);
         Log.d(LOG_TAG, " dest: " + dm.getDestination());
-        //adapter = new ArrayAdapter<Destination>(this, android.R.layout.simple_list_item_1, android.R.id.text1, dm.getDestination());
-        //dbs.getDestination());
-        //dests);
-        ArrayAdapter<Destination> adapt = new CustomListAdapter(this, 0, dm.getDestination());
 
-        Log.d(LOG_TAG, " adapter: " + adapter);
+        ArrayAdapter<Destination> adapt = new DestinationAdapter(this, 0, myDestinations);
+        //ArrayAdapter<Destination> adapt = new DestinationAdapter(this, 0, dm.getDestination());
+        Log.d(LOG_TAG, " adapter: " + adapt);
         destinationList.setAdapter(adapt);
-        //destinationList.setAdapter(adapter);
-
-        //Icons presented that the user chose from the spinner
-        /*
-        im = new IconModel(this);
-        ImageView iconList = (ImageView) findViewById(R.id.iconListImage);
-
-        bildlista.add(R.drawable.icon_activity);
-        bildlista.add(R.drawable.icon_boy);
-        bildlista.add(R.drawable.icon_school);
-
-        //ImageView spinnerImage = (ImageView) findViewById(iconImage);
-        //iconList.setImageResource(getResources().getIdentifier("app.garvinen.leadtheway:drawable/" + "icon_activity" + "icon_boy" + "icon_school", null, null));
-
-        iconList.setImageResource(bildlista.get(spinn)); */
-
-    }//end of onCreate
-
+    }
 
     public void onStart(){
         super.onStart();

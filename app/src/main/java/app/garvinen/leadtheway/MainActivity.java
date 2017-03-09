@@ -3,15 +3,32 @@ package app.garvinen.leadtheway;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import java.util.List;
+
+import app.garvinen.leadtheway.adapters.AddressAdapter;
+import app.garvinen.leadtheway.adapters.IconSearchAdapter;
+import app.garvinen.leadtheway.describe.Destination;
+import app.garvinen.leadtheway.model.DestinationModel;
+import app.garvinen.leadtheway.model.ItemClickSupport;
 
 public class MainActivity extends AppCompatActivity {
 
     private static String LOG_TAG = MainActivity.class.getName();
+    private DestinationModel dm;
+    public List<Destination> myIcons;
+    public RecyclerView firstDestinationIcons;
+    public RecyclerView secondDestinationIcons;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,11 +37,96 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Log.d(LOG_TAG, "Setting Layout Done");
         initiateButtons();
+        setIconAdapter();
     }
+
 
     public void onStart(){
         super.onStart();
         Log.d(LOG_TAG, "onStart: ");
+    }
+
+    private void setIconAdapter() {
+
+        // Initialize destination icons
+        dm = new DestinationModel(this);
+        Log.d(LOG_TAG, " value of dm: " + dm);
+
+        myIcons = dm.getDestination();
+        Log.d(LOG_TAG, " myIcons: " + myIcons);
+
+        firstDestinationIcons = (RecyclerView) findViewById(R.id.iconsList1);            // Initialize the RecyclerView
+        IconSearchAdapter firstadapter = new IconSearchAdapter(this, myIcons);           // Create adapter passing in the sample user data
+        firstDestinationIcons.setAdapter(firstadapter);                                  // Attach the adapter to the recyclerview to populate items
+        firstDestinationIcons.setLayoutManager(new LinearLayoutManager(this));           // Set layout manager to position the items
+
+        secondDestinationIcons = (RecyclerView) findViewById(R.id.iconsList2);            // Initialize the RecyclerView
+        IconSearchAdapter secondadapter = new IconSearchAdapter(this, myIcons);           // Create adapter passing in the sample user data
+        secondDestinationIcons.setAdapter(secondadapter);                                 // Attach the adapter to the recyclerview to populate items
+        secondDestinationIcons.setLayoutManager(new LinearLayoutManager(this));           // Set layout manager to position the items
+        /*
+         * Setup layout manager for items with orientation horizontal
+         */
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        layoutManager.scrollToPosition(0);
+        firstDestinationIcons.setLayoutManager(layoutManager); // Attach layout manager to the RecyclerView
+        iconClick();
+
+        LinearLayoutManager layoutManagerS = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        layoutManager.scrollToPosition(0);
+        secondDestinationIcons.setLayoutManager(layoutManagerS); // Attach layout manager to the RecyclerView
+        iconClickSecond();
+
+
+    } //end of setIconadapter
+
+
+
+    public void iconClick(){
+        /*
+        * Source: http://www.littlerobots.nl/blog/Handle-Android-RecyclerView-Clicks/
+        */
+        ItemClickSupport.addTo(firstDestinationIcons).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
+            @Override
+            public void onItemClicked(RecyclerView recyclerView, int position, View v) {
+                Toast.makeText(getApplicationContext(), "Ikon vald", Toast.LENGTH_SHORT).show();
+                Log.d(LOG_TAG, "position" + position);
+                setAddress(position);
+            }
+        }); //end of ItemClickSupport
+
+    }
+
+    public void iconClickSecond(){
+        /*
+        * Source: http://www.littlerobots.nl/blog/Handle-Android-RecyclerView-Clicks/
+        */
+        ItemClickSupport.addTo(secondDestinationIcons).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
+            @Override
+            public void onItemClicked(RecyclerView recyclerView, int position, View v) {
+                Toast.makeText(getApplicationContext(), "Ikon vald", Toast.LENGTH_SHORT).show();
+                Log.d(LOG_TAG, "position" + position);
+                //setAddress(position);
+            }
+        }); //end of ItemClickSupport
+
+    }
+
+
+    public void setAddress(int position){
+
+        myIcons.get(position);
+        Log.d(LOG_TAG, "myIcons position " + myIcons.get(position));
+
+        String SOJY = myIcons.get(position).getAdress();
+        Log.d(LOG_TAG, "Adressen " + myIcons.get(position));
+
+        ListView destAdress = (ListView) findViewById(R.id.addresList1);
+        Log.d(LOG_TAG, " destinationIcons: " + destAdress);
+        Log.d(LOG_TAG, " dest: " + dm.getDestination());
+        ArrayAdapter<Destination> addressAdapt = new AddressAdapter(this, 0, myIcons);
+        Log.d(LOG_TAG, " adapter: " + addressAdapt);
+        destAdress.setAdapter(addressAdapt);
     }
 
     @Override

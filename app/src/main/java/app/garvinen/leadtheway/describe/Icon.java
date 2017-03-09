@@ -15,7 +15,7 @@ public class Icon {
 
     @Override
     public String toString() {
-        return "Hallå Liverpool";
+        return "IconPath" + iconPath;
     }
 
     // Get new path
